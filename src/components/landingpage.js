@@ -2,6 +2,7 @@ import React from "react";
 import '../css/landingpage.css';
 import LandingHeader from "./landheader";
 import Landinghome from "./landinghome";
+import Landingseconpage from "./landingsecondpage";
 
 const Landingpage =() =>{
     return(
@@ -15,7 +16,8 @@ const Landingpage =() =>{
             </video>
 
         <Landinghome/>
-         
+        
+         <Landingseconpage/>
         
         </div>
     );
