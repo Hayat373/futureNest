@@ -31,8 +31,9 @@
 .buttonhold{
     display: flex;
     justify-content: end;
-   margin-left: 60%;
-   margin-top: 15px;
+   margin-left: 40%;
+   margin-top: -70px;
+   margin-right: 50px;
 }
 .Login{
  width :100px;

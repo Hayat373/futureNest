@@ -1,18 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter as  Router, Route,  Routes } from 'react-router-dom';
 import './App.css';
+import Landingpage from './components/landingpage.js'
+import LoginPage from './page/loginpage.js'
 
-import Landingpage from './components/landingpage';
+const App=()=> {
 
-function App() {
-
-  const handleMouseMove = () => {
-    // You can add interactivity here
-  };
+ 
+  
   return (
-    <div className="App" onMouseMove={handleMouseMove} >
+    <Router>
+            <Routes>
+                <Route path="/" element={<Landingpage />} />
+                <Route path="/login" element={<LoginPage />} />
+            </Routes>
+        </Router>
 
-      <Landingpage/>
-    </div>
+  
   );
 }
 
