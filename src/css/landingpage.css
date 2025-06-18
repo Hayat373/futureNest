@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Instrument Serif';
+}
+.landingpage{
+   display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    height: auto; 
+    overflow: hidden;
+    background-color: black;
+  
+  
+
+}
+
+ .background-video{
+     position: absolute;
+     margin-top: 30px;
+     margin-left: 50px;
+   
+   
+}
+
