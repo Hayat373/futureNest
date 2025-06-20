@@ -37,6 +37,8 @@ function RobotReact() {
           fontSize: '60px',
         }}
       >
+
+        
         <img className='robot' src={require('../assets/robothead.jpg')} alt='Robot'/>
       </div>
     </div>
