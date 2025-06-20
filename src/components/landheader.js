@@ -7,6 +7,9 @@ const LandingHeader = () => {
     const handleLoginClick = () => {
         navigate("/login"); // Navigate to login page
     };
+      const handleSignUpClick = () => {
+        navigate("/signup"); 
+    };
     return (
         <div className="container">
             <div className="logo">
@@ -15,7 +18,7 @@ const LandingHeader = () => {
             </div>
             <div className="buttonhold">
                 <button className="Login" onClick={handleLoginClick}>Login</button>
-                <button className="Signup">SignUP</button>
+                <button className="Signup" onClick={handleSignUpClick}>SignUP</button>
             </div>
         </div>
     );
