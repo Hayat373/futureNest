@@ -55,12 +55,75 @@
 
 .conatiner h1{
     font-style: italic;
-    font-size: 36px;
+    font-size: 30px;
     font-family: 'Instrument Serif';
     color: white;
        z-index: 4;
        background-color: #1a162f;
-       margin-top: -250px;
+       margin-top: -190px;
+       padding-bottom: -10px;
+       margin-bottom: -15px;
+}
+.profile-plate {
+    position: relative;
+    top:-200px;
+    width: 80px;
+    height: 80px;
+    margin-top: -10px;
+    z-index: 4;
+    background-color: transparent;
+    
+}
+
+.profile-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #631CAD;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #555;
+}
+
+.plus-icon {
+    position: absolute;
+    top: 55px; /* Position at the top of the circle */
+    left: 60%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: #631CAD;
+  
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.plus-icon span{
+    color: white;
+    background-color: transparent;
+}
+
+.plus-icon:hover {
+    background-color: #7c0760;
 }
 .form_group{
     position: relative;
@@ -139,7 +202,7 @@
 
 #password{
     position: relative;
-    top:47px;
+    top:40px;
     background-color: transparent;
 }
 #password:focus{
@@ -184,6 +247,100 @@
     transition: all 0.2s ease-in-out;
 }
 
+#email{
+    position: relative;
+    top:65px;
+    background-color: transparent;
+}
+#email:focus{
+     position: absolute;
+    top:-10px;
+    display: block;
+    transition:0.2s;
+    color:white;
+    font-weight: 700;
+}
+#emailinput{
+    position: absolute;
+    top:160px;
+    font-family: 'Instrument Serif';
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 17px;
+    font-style: italic;
+    color: white;
+    padding:  7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+#emailinput:focus~ .form_label{
+    position: absolute; 
+    top:150px;
+    display: block;
+    transition: all 0.2s linear;
+    color:white;
+    font-weight: 700;
+}
+#emailinput:not(:placeholder-shown) ~ .form_label,
+#email:valid ~ .form_label {
+    
+    top: 100px; 
+    font-size: 18px; 
+    font-weight: normal;
+    font-style: italic;
+    transition: all 0.2s ease-in-out;
+}
+
+
+#confirm{
+    position: relative;
+    top:80px;
+    background-color: transparent;
+}
+#confirm:focus{
+     position: absolute;
+    top:-3px;
+    display: block;
+    transition:0.2s;
+    color:white;
+    font-weight: 700;
+}
+#confirminput{
+    position: absolute;
+    top:220px;
+    font-family: 'Instrument Serif';
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 17px;
+    font-style: italic;
+    color: white;
+    padding:  7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+#confirminput:focus~ .form_label{
+    position: relative;
+    top:65px;
+    display: block;
+    transition: all 0.2s linear;
+    color:white;
+    font-weight: 700;
+}
+#confirminput:not(:placeholder-shown) ~ .form_label,
+#confirm:valid ~ .form_label {
+    
+    top: 120px; 
+    font-size: 18px; 
+    font-weight: normal;
+    font-style: italic;
+    transition: all 0.2s ease-in-out;
+}
 .links{
     color:white;
     z-index: 8;
@@ -207,23 +364,51 @@
     color:#631CAD;
 }
 
-#sign{
+#signup{
     color: #631cad;
 
 }
 
-#sign:hover{
+#signup:hover{
     color:white;
 }
 
 .submit_button{
     z-index: 8;
-    width:230px;
-    height: 55px;
+    width:150px;
+    height: 50px;
     color: white;
     position: relative;
-    top:200px;
+    top:160px;
+    left: -20px;
     font-style: italic;
-    font-size: 24px;
+    font-size: 22px;
     background-color: #631CAD;
+    border-radius: 12px;
+}
+
+.text{
+    color: white;
+    font-size:16px ;
+    font-style: italic;
+    position: relative;
+    top:180px;
+    left:40px;
+    z-index: 4;
+    background-color: transparent;
+    width:300px;
+    display: flex;
+    gap:5px;
+}
+.text p{
+    background-color: transparent;
+}
+#login{
+    background-color: transparent;
+    text-decoration: none;
+    color:#631CAD;
+
+}
+#login:hover{
+    color: white;
 }
