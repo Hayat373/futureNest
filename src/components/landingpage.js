@@ -10,7 +10,7 @@ const Landingpage =() =>{
         
         <LandingHeader/>
         
-           <video autoPlay loop muted className="background-video">
+           <video autoPlay  muted className="background-video">
                 <source src={require('../assets/baground.mp4')} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>

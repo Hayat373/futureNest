@@ -3,6 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../css/login.css'
 
 const Login=()=>{
+    const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // Simulate login logic (e.g., API call or state check)
+    console.log('Login button clicked');
+    navigate('/appheader'); // Navigate to AppHeaderPage
+  };
+  
 
      const [profileImage, setProfileImage] = useState(null);
     
@@ -52,7 +60,7 @@ const Login=()=>{
         </Link>
             </div>
 
-             <button className="submit_button">Login</button>
+             <button className="submit_button" onClick={handleLogin}>Login</button>
            
             
         </div>

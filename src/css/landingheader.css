@@ -6,6 +6,7 @@
 .container{
     width:100%;
     height:auto;
+    background-color: transparent;
 
 }
 .logo{
@@ -32,8 +33,9 @@
     display: flex;
     justify-content: end;
    margin-left: 40%;
-   margin-top: -70px;
+   margin-top: 20px;
    margin-right: 50px;
+   background-color: transparent;
 }
 .Login{
  width :100px;
