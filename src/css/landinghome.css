@@ -23,7 +23,8 @@
     color: white; 
     margin: 30px;
     font-style: italic;
-    
+    display: flex;
+    flex-direction: column;
     
 
    

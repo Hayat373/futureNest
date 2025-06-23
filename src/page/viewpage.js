@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import AppHeader from "../components/AppHeader.js"; 
+import AppHeader from '../components/AppHeader.js'; 
 import '../css/viewpage.css';
+import Search from "../components/search.js";
 
 const Viewpage = () => {
    
@@ -9,6 +10,7 @@ const Viewpage = () => {
         <div className="container">
            
             <AppHeader />
+            <Search />
 
                     
         </div>
