@@ -1,0 +1,63 @@
+.time-capsule-container {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.capsule-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.capsule-name {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.capsule-time {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.capsule-note {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    width: 200px; /* Adjust as needed */
+}
+
+.capsule-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.unlock-button, .share-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.unlock-button {
+    background-color: #b19cd9; /* Light purple */
+}
+
+.share-button {
+    background-color: #9370db; /* Darker purple */
+}
+
+.unlock-button:hover, .share-button:hover {
+    opacity: 0.9;
+}
