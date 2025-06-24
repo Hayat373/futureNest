@@ -14,14 +14,14 @@ const Signup = () => {
     };
     return(
         <div className="conatiner">
-            <div className="profile-plate">
-                <div className="profile-circle">
+            <div className="profile-plate-login">
+                <div className="profile-circle-login">
                     {profileImage ? (
                         <img src={profileImage} alt="Profile" className="profile-image" />
                     ) : (
-                        <div className="profile-placeholder"></div>
+                        <div className="profile-placeholder-login"></div>
                     )}
-                    <label className="plus-icon">
+                    <label className="plus-icon-login">
                         <span>+</span>
                         <input
                             type="file"
