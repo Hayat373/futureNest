@@ -6,39 +6,62 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 5px;
+    width:90%;
+    height: auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 40px;
 }
 
 .capsule-header {
     display: flex;
     justify-content: space-between;
+    background-color: transparent;
     width: 100%;
     margin-bottom: 10px;
 }
 
 .capsule-name {
     font-size: 16px;
+    background-color: transparent;
     color: #ccc;
+    font-style: italic;
 }
 
 .capsule-time {
     font-size: 16px;
-    color: #ccc;
+    background-color: #F2E7FF;
+    color: #631CAD;
+    width:100px;
+    border-radius: 10px;
+    margin-right:5%;
+    text-align: center;
+}
+.capsule-hold{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap:60%;
+    background-color: transparent;
 }
 
 .capsule-note {
-    background-color: #e0e0e0;
-    color: #333;
+    background-color: transparent;
+    color:white;
+    width:60%; 
     padding: 8px 12px;
     border-radius: 20px;
     margin-bottom: 10px;
     font-size: 14px;
-    width: 200px; /* Adjust as needed */
+    font-style: italic;
+    
 }
 
 .capsule-actions {
     display: flex;
     gap: 10px;
+    width:50%;
+    background-color: transparent;
+    
 }
 
 .unlock-button, .share-button {
@@ -48,6 +71,9 @@
     font-size: 14px;
     cursor: pointer;
     color: #fff;
+    width:100px;
+    height:35px;
+    align-self: center;
 }
 
 .unlock-button {

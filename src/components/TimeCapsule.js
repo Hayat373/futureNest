@@ -37,9 +37,10 @@ const TimeCapsule = () => {
         <div className="time-capsule-container">
             <div className="capsule-header">
                 <span className="capsule-name">{capsuleName}</span>
-                <span classNote="capsule-time">{formatTime(timeLeft)}</span>
+                <span className="capsule-time">{formatTime(timeLeft)}</span>
             </div>
-            <div classNote="capsule-note">{note}</div>
+            <div className="capsule-hold">
+            <div className="capsule-note">{note}</div>
             <div className="capsule-actions">
                 <button className="unlock-button" onClick={handleUnlock}>
                     Unlock
@@ -47,6 +48,7 @@ const TimeCapsule = () => {
                 <button className="share-button" onClick={handleShare}>
                     Share
                 </button>
+            </div>
             </div>
         </div>
     );
