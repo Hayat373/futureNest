@@ -2,10 +2,10 @@
     margin:0;
     padding: 0;
 }
-.container{
+.container-view{
     width: 100%;
     height: auto;
-    display: flex;
+   
 }
 
 .add-button {

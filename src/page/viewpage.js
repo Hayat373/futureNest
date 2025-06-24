@@ -13,7 +13,7 @@ const Viewpage = () => {
    
 
     return (
-        <div className="container">
+        <div className="container-view">
            
             <AppHeader />
             <Search />

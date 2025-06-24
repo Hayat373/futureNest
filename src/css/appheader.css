@@ -3,11 +3,13 @@
     align-items: center;
     justify-content: space-between; /* Adjust to space out Header, notification, and profile */
     padding: 10px 20px;
+    width: 100%;
+    height: auto;
 }
 
 .notification-plate {
     position: relative;
-    left:195%;
+    left:30%;
     display: flex;
     align-items: center;
 }
@@ -33,7 +35,7 @@
 .profile-plate {
     position: relative;
     top:0px;
-    left:200%;
+    left:-90px;
     width: 50px;
     height: 50px;
     margin-top: 0px;
