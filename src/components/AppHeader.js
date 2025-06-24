@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "./header.js";
 import '../css/appheader.css';
 import { FaBell } from 'react-icons/fa';
+import { Navigate } from "react-router-dom";
 
 const AppHeader=()=>{
      const [profileImage, setProfileImage] = useState(null);
+     const navigate = useNavigate(); 
       const [notificationCount, setNotificationCount] = useState(3);      
                 const handleImageUpload = (e) => {
                     const file = e.target.files[0];
@@ -13,6 +16,9 @@ const AppHeader=()=>{
                         setProfileImage(imageUrl);
                     }
                 };
+       const handleProfileClick = () => {
+    navigate("/update"); // Navigate to lowercase /update
+  };
     return(
         <div className="appheader">
             <Header />
@@ -24,7 +30,7 @@ const AppHeader=()=>{
                 )}
             </div>
 
-                <div className="profile-plate">
+                <div className="profile-plate" onClick={handleProfileClick}>
                 <div className="profile-circle">
                     {profileImage ? (
                         <img src={profileImage} alt="Profile" className="profile-image" />

@@ -276,7 +276,7 @@
     transition: border-color 0.2s;
 }
 
-#emailinput:focus~ .form_label{
+#emailinput:focus~ .email_label{
     position: absolute; 
     top:150px;
     display: block;
@@ -284,14 +284,18 @@
     color:white;
     font-weight: 700;
 }
-#emailinput:not(:placeholder-shown) ~ .form_label,
-#email:valid ~ .form_label {
+#emailinput:not(:placeholder-shown) ~ .email_label,
+#email:valid ~ .email_label {
     
     top: 100px; 
     font-size: 18px; 
     font-weight: normal;
     font-style: italic;
     transition: all 0.2s ease-in-out;
+}
+.email_field::placeholder {
+  color: transparent; /* Hides the placeholder text */
+  opacity: 0; /* Alternatively, you can use this */
 }
 
 
@@ -300,13 +304,17 @@
     top:80px;
     background-color: transparent;
 }
-#confirm:focus{
+#confirm{
      position: absolute;
-    top:-3px;
+    top:220px;
     display: block;
     transition:0.2s;
     color:white;
     font-weight: 700;
+}
+.confirm_field::placeholder {
+  color: transparent; /* Hides the placeholder text */
+  opacity: 0; /* Alternatively, you can use this */
 }
 #confirminput{
     position: absolute;
@@ -324,18 +332,18 @@
     transition: border-color 0.2s;
 }
 
-#confirminput:focus~ .form_label{
+#confirminput:focus~ .confirm_label{
     position: relative;
-    top:65px;
+    top:90px;
     display: block;
     transition: all 0.2s linear;
     color:white;
     font-weight: 700;
 }
-#confirminput:not(:placeholder-shown) ~ .form_label,
-#confirm:valid ~ .form_label {
+#confirminput:not(:placeholder-shown) ~ .confirm_label,
+#confirm:valid ~ .confirm_label {
     
-    top: 120px; 
+    top: 140px; 
     font-size: 18px; 
     font-weight: normal;
     font-style: italic;
@@ -385,6 +393,7 @@
     font-size: 22px;
     background-color: #631CAD;
     border-radius: 12px;
+    margin-top: 20px;
 }
 
 .text{
@@ -411,4 +420,38 @@
 }
 #login:hover{
     color: white;
+}
+
+.logout_button{
+    z-index: 8;
+    width:70px;
+    height: 40px;
+    color: white;
+    position: relative;
+    top:160px;
+    left: -20px;
+    font-style: italic;
+    font-size: 16px;
+    background-color: #631CAD;
+    border-radius: 12px;
+   
+}
+.update_button{
+       z-index: 8;
+    width:70px;
+    height: 40px;
+    color: white;
+    position: relative;
+    top:160px;
+    left: -20px;
+    font-style: italic;
+    font-size: 16px;
+    background-color: #631CAD;
+    border-radius: 12px;
+    display: inline;
+}
+.button-hold{
+    display:flex;
+    gap:40px;
+     margin-top: 20px;
 }

@@ -3,7 +3,7 @@ import Header from "../components/header";
 import '../css/loginpage.css';
 import Update from "../components/update";
 
-const SignUPpage=()=>{
+const Updatepage=()=>{
     return(
         <div>
         <Header/>
@@ -12,4 +12,4 @@ const SignUPpage=()=>{
     )
 }
 
-export default SignUPpage;
+export default Updatepage;
