@@ -20,7 +20,7 @@ const Viewpage = () => {
             <TimeCapsule />
 
             <button className="add-button" onClick={handleAddClick}>
-            <span className="plus-icon">+</span> ADD
+            <span className="plus-icon-add">+</span> ADD
         </button>
 
                     

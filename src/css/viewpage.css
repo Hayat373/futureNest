@@ -22,14 +22,19 @@
     justify-content: center;
     gap: 5px; /* Space between + and ADD */
     outline: none;
+    width: 90px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    margin-left:50%;
+    margin-top: 20px;
 }
 
 .add-button:hover {
     background-color: #7b5cb9; /* Darker purple on hover */
 }
 
-.plus-icon {
+.plus-icon-add {
     font-size: 18px; /* Adjust size of the + icon */
     line-height: 1;
+    background-color: transparent;
+    color: white;
 }

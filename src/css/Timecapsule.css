@@ -10,8 +10,13 @@
     height: auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     margin-left: 40px;
+    transition: transform 0.3s ease-in-out, box-shaadow 0.3s ease;
 }
 
+.time-capsule-container:hover{
+    transform: scale(1.05) translateY(-4px);
+    box-shadow: 0 8px 16px rgba(244, 216, 241, 0.2);
+}
 .capsule-header {
     display: flex;
     justify-content: space-between;
