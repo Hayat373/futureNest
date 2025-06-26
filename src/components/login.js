@@ -8,7 +8,7 @@ const Login=()=>{
   const handleLogin = () => {
     // Simulate login logic (e.g., API call or state check)
     console.log('Login button clicked');
-    navigate('/appheader'); // Navigate to AppHeaderPage
+    navigate('/view'); // Navigate to AppHeaderPage
   };
   
 

@@ -7,6 +7,7 @@ import LoginPage from './page/loginpage.js'
 import SignUPpage from './page/signuppage.js';
 import Viewpage from './page/viewpage.js';
 import Updatepage from './page/updatepage.js';
+import Sharepage from './page/sharepage.js';
 
 const App=()=> {
 
@@ -18,8 +19,9 @@ const App=()=> {
                 <Route path="/" element={<Landingpage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignUPpage />} />
-                <Route path="/appheader" element={<Viewpage />} />
+                <Route path="/view" element={<Viewpage />} />
                 <Route path="/update" element={<Updatepage />} />
+                 <Route path="/share" element={<Sharepage />} />
             </Routes>
         </Router>
 
