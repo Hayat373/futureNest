@@ -9,6 +9,7 @@ import Viewpage from './page/viewpage.js';
 import Updatepage from './page/updatepage.js';
 import Sharepage from './page/sharepage.js';
 import Detailpage from './page/detailpage.js';
+import Createpage from './page/createpage.js';
 
 const App=()=> {
 
@@ -24,6 +25,7 @@ const App=()=> {
                 <Route path="/update" element={<Updatepage />} />
                  <Route path="/share" element={<Sharepage />} />
                  <Route path="/detail" element={<Detailpage />} />
+                <Route path="/create" element={<Createpage />} />
             </Routes>
         </Router>
 
