@@ -1,0 +1,118 @@
+.content-container {
+  background-color: rgb(42, 25, 45);
+  padding: 20px;
+  border: 2px solid #631CAD;
+  border-radius: 10px;
+  color: white;
+  width: 100%;
+  max-width: 1000px;
+  margin: 100px;
+  margin-left: 10%;
+}
+
+.back-button {
+  background-color: #39383a;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #4a4a4a;
+}
+
+
+.title-box {
+  background-color: #39383a;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.description-box {
+  background-color: #39383a;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.image-box {
+  background-color: #39383a;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.file-section {
+  display: flex;
+  gap: 10px;
+}
+
+.file-box {
+  background-color: #39383a;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.file-icon {
+  width: 20px;
+  height: 20px;
+  background-color: #4a4a4a;
+  border-radius: 3px;
+}
+
+.detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-box {
+  background-color: #2e2e2e;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.detail-box button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #00d4ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
