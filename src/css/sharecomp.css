@@ -78,3 +78,21 @@
     background-color: transparent;
     color: white;
 }
+.share-button-hold{
+    display: flex;
+    background-color: transparent;
+     gap:70%;
+}
+.unlock-share-button{
+     padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #631CAD;
+    width:100px;
+    height:35px;
+    align-self: center;
+    
+}

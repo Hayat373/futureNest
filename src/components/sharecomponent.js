@@ -33,6 +33,11 @@ const Sharecomponent =()=>{
                 return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
             };
 
+            const handleUnlock = () => {
+        // Add unlock functionality here
+        alert("Capsule unlocked!");
+    };
+
     return(
         <div className="share-crard-hold">
 
@@ -52,8 +57,13 @@ const Sharecomponent =()=>{
                 <span className="capsule-share-time">{formatTime(timeLeft)}</span>
             </div>
 
-           
+           <div className="share-button-hold">
             <div className="share-note">{note}</div>
+            <button className="unlock-share-button" onClick={handleUnlock}>
+                    Unlock
+                </button>
+
+                </div>
             
             
 
