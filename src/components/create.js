@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "../css/create.css";
 
-const Create= () => {
+const Create = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dateTime, setDateTime] = useState(new Date()); // Combined date and time
   const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
+  const [textInput, setTextInput] = useState(""); // Initialize here
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDescriptionChange = (e) => setDescription(e.target.value);
@@ -62,6 +63,11 @@ const Create= () => {
     setDescription("");
     setDateTime(new Date());
     setFiles([]);
+    setTextInput(""); // Reset text input on cancel
+  };
+
+  const handleTextInputChange = (e) => {
+    setTextInput(e.target.value);
   };
 
   return (
@@ -133,12 +139,12 @@ const Create= () => {
         </button>
       </div>
       <input
-      id="text_create"
+        id="text_create"
         type="text"
-        value=""
+        value={textInput} // Bind to state
         placeholder="Text"
         className="input-field"
-        disabled
+        onChange={handleTextInputChange} // Handle input change
       />
       <button className="add-button">Add</button>
     </div>

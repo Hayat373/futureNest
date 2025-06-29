@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import { useNavigate } from "react-router-dom"; // Add this import
+
 import AppHeader from '../components/AppHeader.js'; 
 import '../css/viewpage.css';
 import Search from "../components/search.js";
@@ -6,9 +9,9 @@ import TimeCapsule from "../components/TimeCapsule.js";
 
 const Viewpage = () => {
 
+     const navigate = useNavigate(); 
     const handleAddClick = () => {
-        // Add your add functionality here
-        alert("Add button clicked!");
+      navigate('/create');
     };
    
 
