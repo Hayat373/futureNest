@@ -1,0 +1,89 @@
+.header-container {
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    justify-content: space-between; /* Space between search and lock button */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px; /* Rounded edges */
+    font-size: 14px;
+    outline: none;
+    background-color: #ccc; /* Light gray background */
+    color: #333;
+    width: 200px; /* Adjust width as needed */
+}
+.droupdown-hold{
+    width:163px;
+    height: 34px;
+      background-color:transparent;
+      border-radius: 4px;
+      display: inline;
+       border-radius: 20px;
+    
+
+}
+
+.lock-button {
+  /* Your existing styles, e.g. */
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap:3;
+  font-size: 20px;
+  font-style: italic;
+   width:163px;
+    height: 34px;
+}
+
+.lock-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Optional: Style the dropdown items if needed */
+.lock-button + div button {
+  text-align: left;
+}
+.w-5{
+    width:35px;
+    height: 35px;
+    background-color: transparent;
+    margin-left: 30px;
+
+}
+.droupdouns-holding{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    background-color:transparent;
+     border-radius: 10px;
+
+}
+
+.py-1{
+    display: flex;
+    flex-direction: column;
+     background-color:transparent;
+     color:#000;
+     border-radius: 10px;
+}
+.locked-droupdown-hold,
+.unloked-droupdown-hold{
+     background-color: #e0e0e0;
+     border-radius: 10px;
+     margin: 1.4px;
+     text-align: center;
+}

@@ -1,0 +1,17 @@
+
+.robotContainer{
+    height:400px;
+    width:500px;
+    position: absolute;
+    left:10%;
+     bottom: 15%;
+    
+}
+.robot{
+  
+   position: 'absolute';
+   left:200px;
+   top:-100px;
+   width:300px;
+         
+}

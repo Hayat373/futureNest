@@ -1,0 +1,97 @@
+.appheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Adjust to space out Header, notification, and profile */
+    padding: 10px 20px;
+    width: 100%;
+    height: auto;
+}
+
+.notification-plate {
+    position: relative;
+    left:30%;
+    display: flex;
+    align-items: center;
+}
+
+.notification-icon {
+    font-size: 24px; /* Adjust size as needed */
+    color: #333; /* Adjust color to match your theme */
+    cursor: pointer;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red; /* Badge color */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.profile-plate {
+    position: relative;
+    top:0px;
+    left:-90px;
+    width: 50px;
+    height: 50px;
+    margin-top: 0px;
+    z-index: 4;
+    background-color: transparent;
+    
+}
+
+.profile-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #631CAD;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #555;
+}
+
+.plus-icon {
+    position: absolute;
+    top: 30px; /* Position at the top of the circle */
+    left: 60%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #631CAD;
+  
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.plus-icon span{
+    color: white;
+    background-color: transparent;
+    font-size: 12px;
+}
+
+.plus-icon:hover {
+    background-color: #7c0760;
+}
