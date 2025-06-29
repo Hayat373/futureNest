@@ -1,0 +1,457 @@
+.conatiner{
+    background-color: #1E1E1E;
+    color: white;
+    width:407px;
+    height: 595px;
+    position: relative;
+    border-radius: 15px;
+    top:30%;
+    left:30%;
+    place-content: center;
+    place-items: center;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+  
+    margin-bottom: 50px;
+    overflow: hidden;   
+  
+}
+
+.conatiner::before{
+    content: "";
+    position: absolute;
+    top: -100px;
+    width:100%;
+  
+    background-image: linear-gradient(180deg, #600676, #7c0760);
+    height: 130%;
+    animation: borderAnimation 7s ease-in-out infinite;
+   transition: all 0.2s ease-in-out; 
+     box-shadow: 0 0 20px rgba(147, 53, 165, 0.5), 0 0 40px rgba(220, 195, 214, 0.5); 
+      z-index: 1;
+    }
+
+@keyframes borderAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.conatiner::after{
+    content: "";
+    position:absolute;
+    background: #07182e;
+    inset:5px;
+    border-radius: 15px;
+    z-index: 2;
+}
+
+.conatiner h1{
+    font-style: italic;
+    font-size: 30px;
+    font-family: 'Instrument Serif';
+    color: white;
+       z-index: 4;
+       background-color: #1a162f;
+       margin-top: -190px;
+       padding-bottom: -10px;
+       margin-bottom: -15px;
+}
+.profile-plate-login {
+    position: relative;
+    top:-200px;
+    width: 80px;
+    height: 80px;
+    margin-top: -10px;
+    z-index: 4;
+    background-color: transparent;
+    
+}
+
+.profile-circle-login {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #631CAD;
+}
+
+.profile-image-login {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-placeholder-login {
+    width: 100%;
+    height: 100%;
+    background-color: #555;
+}
+
+.plus-icon-login {
+    position: absolute;
+    top: 55px; /* Position at the top of the circle */
+    left: 60%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: #631CAD;
+  
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.plus-icon-login span{
+    color: white;
+    background-color: transparent;
+}
+
+.plus-icon-login:hover {
+    background-color: #7c0760;
+}
+.form_group{
+    position: relative;
+    top:20px;
+    left:-40px;
+    padding: 20px 0 0;
+    width: 100%;
+    height: auto;
+    max-width: 180px;
+    font-style: italic;
+    z-index: 4;
+    background-color: transparent;
+    
+}
+.form_field
+{
+    font-family: 'Instrument Serif';
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 17px;
+    font-style: italic;
+    
+    color: white;
+    padding:  7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form_field::placeholder
+{
+    color: transparent;
+}
+
+.form_field:placeholder-shown~ .form_label{
+    font-size: 17px;
+    cursor:text;
+    top:20px;
+}
+.form_label,
+#password{
+    position: absolute;
+    top:-2;
+    left: 0;
+    display: block;
+    font-size: 17px;
+    color: white;
+    pointer-events: none;
+    background-color: #1a162f;
+    transition: 0.2s;
+}
+.form_field:focus,
+#passwordinput:focus
+{
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #631CAD, #631CAD);
+    border-image-slice: 1;
+}
+
+.form_field:focus~ .form_label
+
+{
+    position: absolute;
+    top:-10px;
+    display: block;
+    transition:0.2s;
+    color:white;
+    font-weight: 700;
+}
+.form_field:required, .form_field:invalid{
+    box-shadow: none;
+}
+
+#password{
+    position: relative;
+    top:40px;
+    background-color: transparent;
+}
+#password:focus{
+     position: absolute;
+    top:-1px;
+    display: block;
+    transition:0.2s;
+    color:white;
+    font-weight: 700;
+}
+#passwordinput{
+    position: absolute;
+    top:100px;
+    font-family: 'Instrument Serif';
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 17px;
+    font-style: italic;
+    color: white;
+    padding:  7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+#passwordinput:focus~ .form_label{
+    position: absolute;
+    top:80px;
+    display: block;
+    transition: all 0.2s linear;
+    color:white;
+    font-weight: 700;
+}
+#passwordinput:not(:placeholder-shown) ~ .form_label,
+#password:valid ~ .form_label {
+    
+    top: 80px; 
+    font-size: 18px; 
+    font-weight: normal;
+    font-style: italic;
+    transition: all 0.2s ease-in-out;
+}
+
+#email{
+    position: relative;
+    top:65px;
+    background-color: transparent;
+}
+#email:focus{
+     position: absolute;
+    top:-10px;
+    display: block;
+    transition:0.2s;
+    color:white;
+    font-weight: 700;
+}
+#emailinput{
+    position: absolute;
+    top:160px;
+    font-family: 'Instrument Serif';
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 17px;
+    font-style: italic;
+    color: white;
+    padding:  7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+#emailinput:focus~ .email_label{
+    position: absolute; 
+    top:150px;
+    display: block;
+    transition: all 0.2s linear;
+    color:white;
+    font-weight: 700;
+}
+#emailinput:not(:placeholder-shown) ~ .email_label,
+#email:valid ~ .email_label {
+    
+    top: 100px; 
+    font-size: 18px; 
+    font-weight: normal;
+    font-style: italic;
+    transition: all 0.2s ease-in-out;
+}
+.email_field::placeholder {
+  color: transparent; /* Hides the placeholder text */
+  opacity: 0; /* Alternatively, you can use this */
+}
+
+
+#confirm{
+    position: relative;
+    top:80px;
+    background-color: transparent;
+}
+#confirm{
+     position: absolute;
+    top:220px;
+    display: block;
+    transition:0.2s;
+    color:white;
+    font-weight: 700;
+}
+.confirm_field::placeholder {
+  color: transparent; /* Hides the placeholder text */
+  opacity: 0; /* Alternatively, you can use this */
+}
+#confirminput{
+    position: absolute;
+    top:220px;
+    font-family: 'Instrument Serif';
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 17px;
+    font-style: italic;
+    color: white;
+    padding:  7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+#confirminput:focus~ .confirm_label{
+    position: relative;
+    top:90px;
+    display: block;
+    transition: all 0.2s linear;
+    color:white;
+    font-weight: 700;
+}
+#confirminput:not(:placeholder-shown) ~ .confirm_label,
+#confirm:valid ~ .confirm_label {
+    
+    top: 140px; 
+    font-size: 18px; 
+    font-weight: normal;
+    font-style: italic;
+    transition: all 0.2s ease-in-out;
+}
+.links{
+    color:white;
+    z-index: 8;
+    position: relative;
+    top:130px;
+    left:-10px;
+    display: flex;
+    gap:90px;
+    background-color: transparent;
+}
+
+.links a{
+    background-color: transparent;
+    color:white;
+    text-decoration: none;
+    font-style: italic;
+    font-size: 16px;
+
+}
+.links a:hover{
+    color:#631CAD;
+}
+
+#signup{
+    color: #631cad;
+
+}
+
+#signup:hover{
+    color:white;
+}
+
+.submit_button{
+    z-index: 8;
+    width:150px;
+    height: 50px;
+    color: white;
+    position: relative;
+    top:160px;
+    left: -20px;
+    font-style: italic;
+    font-size: 22px;
+    background-color: #631CAD;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.text{
+    color: white;
+    font-size:16px ;
+    font-style: italic;
+    position: relative;
+    top:180px;
+    left:40px;
+    z-index: 4;
+    background-color: transparent;
+    width:300px;
+    display: flex;
+    gap:5px;
+}
+.text p{
+    background-color: transparent;
+}
+#login{
+    background-color: transparent;
+    text-decoration: none;
+    color:#631CAD;
+
+}
+#login:hover{
+    color: white;
+}
+
+.logout_button{
+    z-index: 8;
+    width:70px;
+    height: 40px;
+    color: white;
+    position: relative;
+    top:160px;
+    left: -20px;
+    font-style: italic;
+    font-size: 16px;
+    background-color: #631CAD;
+    border-radius: 12px;
+   
+}
+.update_button{
+       z-index: 8;
+    width:70px;
+    height: 40px;
+    color: white;
+    position: relative;
+    top:160px;
+    left: -20px;
+    font-style: italic;
+    font-size: 16px;
+    background-color: #631CAD;
+    border-radius: 12px;
+    display: inline;
+}
+.button-hold{
+    display:flex;
+    gap:40px;
+     margin-top: 20px;
+}
