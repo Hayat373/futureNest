@@ -1,7 +1,15 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+
+import {
+  Injectable,
+  ConflictException,
+  UnauthorizedException,
+} from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
+import { LoginUserDto } from './dto/login-user.dto';
 import { User } from './entitiy/user.entitiy';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -10,17 +18,34 @@ export class UserService {
     private usersRepository: Repository<User>,
   ) {}
 
-  async createUser(username: string, email: string, password: string) {
-    const user = this.usersRepository.create({ username, email, password });
-    return await this.usersRepository.save(user);
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const { username, email, password } = createUserDto;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = this.usersRepository.create({
+      username,
+      email,
+      password: hashedPassword,
+    });
+
+    try {
+      return await this.usersRepository.save(user);
+    } catch (error) {
+      throw new ConflictException('Username or email already exists');
+    }
   }
 
-  async findUserByUsername(username: string) {
-    return this.usersRepository.findOne({ where: { username } });
-  }
-
- async updateUser(id: number, updateData: Partial<User>) {
-  await this.usersRepository.update(id, updateData);
-  return this.usersRepository.findOne({ where: { id } });
+  async findByUsername(username: string): Promise<User | undefined> {
+  const user = await this.usersRepository.findOne({ where: { username } });
+  return user ?? undefined; // Return undefined if user is null
 }
+
+  async validateUser(loginUserDto: LoginUserDto): Promise<User> {
+    const { username, password } = loginUserDto;
+    const user = await this.findByUsername(username);
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+    return user;
+  }
 }
