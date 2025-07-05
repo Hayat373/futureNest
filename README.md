@@ -30,7 +30,7 @@ Make sure you have the following installed:
 
 ```bash
 git clone https://github.com/Hayat373/futureNest.git
-cd futureNest
+cd futureNest ```
 
 Setup Backend
 1,Navigate to the backend directory:
