@@ -32,6 +32,10 @@ Make sure you have the following installed:
 git clone https://github.com/Hayat373/futureNest.git
 cd futureNest
 
-###Setup Backend
+Setup Backend
 1,Navigate to the backend directory:
 cd backend
+2,Install dependencies:
+npm install
+
+
