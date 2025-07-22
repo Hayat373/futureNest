@@ -1,19 +1,41 @@
 import React, { useState } from "react";
+import axios from 'axios'; 
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/login.css'
 
 const Login=()=>{
     const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Simulate login logic (e.g., API call or state check)
-    console.log('Login button clicked');
-    navigate('/view'); // Navigate to AppHeaderPage
-  };
+    const [profileImage, setProfileImage] = useState(null);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+  const handleLogin = async() => {
+    const formData= new FormData();
+
+    formData.append('username', username);
+        formData.append('password', password);
+        if (profileImage) {
+            const response = await fetch(profileImage);
+            const blob = await response.blob();
+            formData.append('profileImage', blob, 'profile.png'); // Append the image
+        }
+
+        try {
+            const { data } = await axios.post('http://localhost:3000/auth/login', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            console.log('Login successful:', data);
+            // Save token or perform further actions
+            navigate('/view'); // Navigate to AppHeaderPage
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    };
   
 
-     const [profileImage, setProfileImage] = useState(null);
-    
         const handleImageUpload = (e) => {
             const file = e.target.files[0];
             if (file) {
@@ -45,10 +67,25 @@ const Login=()=>{
 
             <h1>Login</h1>
             <div className="form_group field">
-    <input type="text" className="form_field" placeholder="User Name" required />
+   <input
+    type="text"
+    className="form_field"
+    placeholder="User Name"
+    value={username} // Bind to state
+    onChange={(e) => setUsername(e.target.value)} // Update state on input change
+    required
+/>
     <label htmlFor="name" className="form_label">User Name</label>
     <br/>
-    <input  id="passwordinput"type="password" className="form_field" placeholder="password" required />
+<input
+    id="passwordinput"
+    type="password"
+    className="form_field"
+    placeholder="password"
+    value={password} // Bind to state
+    onChange={(e) => setPassword(e.target.value)} // Update state on input change
+    required
+/>
     <label id="password" htmlFor="password" className="form_label">Password</label>
 
 </div>
