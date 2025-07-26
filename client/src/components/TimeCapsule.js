@@ -53,6 +53,7 @@ const TimeCapsule = () => {
                     </button>
                     <button className="share-button" onClick={handleShare}>
                         Share
+
                     </button>
                 </div>
             </div>
