@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 import '../css/login.css'
 
 const Signup = () => {
     const [profileImage, setProfileImage] = useState(null);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');   
+    const [email, setEmail] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const navigate = useNavigate();
+
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -12,6 +19,29 @@ const Signup = () => {
             setProfileImage(imageUrl);
         }
     };
+
+    const handleSignup = async () => {
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+        const formData = {
+            username,
+            password,
+            email,
+        };
+        try{
+            const response=await axios.post('http://localhost:3000/users/signup', formData);
+            console.log('Signup successful:', response.data);
+            navigate('/login'); // Navigate to login page after successful signup
+        }
+        catch (error) {
+            console.error('Signup failed:', error);
+            alert('signup faild:'+ error.response.data.message);
+        }
+
+    };
+
     return(
         <div className="conatiner">
             <div className="profile-plate-login">
@@ -35,17 +65,17 @@ const Signup = () => {
 
             <h1>Sign Up</h1>
             <div className="form_group field">
-    <input type="text" className="form_field" placeholder="User Name" required />
+    <input type="text" className="form_field" value={username} onChange={(e)=>setUsername(e.target.value)} placeholder="User Name" required />
     <label htmlFor="name" className="form_label">User Name</label>
     <br/>
-    <input  id="passwordinput"type="password" className="form_field" placeholder="password" required />
+    <input  id="passwordinput"type="password" value={password}  onChange={(e)=> setPassword(e.target.value)} className="form_field" placeholder="password" required />
     <label id="password" htmlFor="password" className="form_label">Password</label>
     <br />
-    <input  id="emailinput" type="text" className="email_field" placeholder="email" required />
+    <input  id="emailinput" type="text" value={email} onChange={(e)=>setEmail(e.target.value)} className="email_field" placeholder="email" required />
     <label id="email" htmlFor="name" className="email_label">Email</label>
 
     <br />
-    <input id="confirminput" type="text" className="confirm_field" placeholder="confirm Password" required />
+    <input id="confirminput" type="text" className="confirm_field"  value={confirmPassword}  onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="confirm Password" required />
     <label id="confirm" htmlFor="name" className="confirm_label">Confirm Password</label>
     
 
@@ -53,7 +83,7 @@ const Signup = () => {
 
  
 
-             <button className="submit_button">Sign Up</button>
+             <button className="submit_button" onClick={handleSignup}>Sign Up</button>
            <div className="text">
             <p>Already have accout?</p>
             <Link to="/login" className="link" id="login">Login</Link>             </div>
