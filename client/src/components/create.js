@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "../css/create.css";
+import axios from "axios";
 
 const Create = () => {
   const [title, setTitle] = useState("");
@@ -53,9 +54,33 @@ const Create = () => {
     setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
   };
 
-  const handleUpload = () => {
-    console.log("Uploading:", { title, description, dateTime, files });
-    // Add upload logic here
+  const handleUpload = async () => {
+   const formData = new FormData();
+
+   formData.append("title", title);
+   formData.append("description", description); 
+   formData.append("unlockDateTime", dateTime.toISOString()); 
+   formData.append("textInput", textInput); // Append text input
+   // // Convert to ISO string
+
+   files.forEach(file => {
+      formData.append("file", file);
+    });
+
+    
+
+    try{
+      const response= await axios.post ('http://localhost:3000/capsules', formData,{
+        headers:{
+          'Content-Type':'multipart/form-data',
+        },
+      });
+      console.log ('capsole created successfullt:', response.data);
+    }
+    catch(error){
+      console.log('Error creating capsule:' ,error.response ? error.response.data : error.message)
+      alert ('failed to create capsule:'+(error.response ? error.response.data.message : error.message));
+    }
   };
 
   const handleCancel = () => {
@@ -146,7 +171,7 @@ const Create = () => {
         className="input-field"
         onChange={handleTextInputChange} // Handle input change
       />
-      <button className="add-button">Add</button>
+      <button className="add-button" onClick={handleUpload}>Add</button>
     </div>
   );
 };
