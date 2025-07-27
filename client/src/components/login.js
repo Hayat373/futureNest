@@ -22,7 +22,7 @@ const Login=()=>{
         }
 
         try {
-            const { data } = await axios.post('http://localhost:3000/auth/login', formData, {
+            const { data } = await axios.post('http://localhost:3000/users/login', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
