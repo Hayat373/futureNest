@@ -10,13 +10,24 @@
     height: auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     margin-left: 40px;
-    transition: transform 0.3s ease-in-out, box-shaadow 0.3s ease;
+   
 }
+.capsule-card{
+    background-color: #2c2c2c;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 97%;
 
-.time-capsule-container:hover{
-    transform: scale(1.05) translateY(-4px);
-    box-shadow: 0 8px 16px rgba(244, 216, 241, 0.2);
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+     transition: transform 0.3s ease-in-out, box-shaadow 0.3s ease;
+
 }
+.capsule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}   
 .capsule-header {
     display: flex;
     justify-content: space-between;
@@ -26,9 +37,9 @@
 }
 
 .capsule-name {
-    font-size: 16px;
+    font-size: 32px;
     background-color: transparent;
-    color: #ccc;
+    color: #bebabd;
     font-style: italic;
 }
 
@@ -37,9 +48,12 @@
     background-color: #F2E7FF;
     color: #631CAD;
     width:100px;
+    padding: 5px 10px;
+    font-weight: bold;
     border-radius: 10px;
     margin-right:5%;
     text-align: center;
+    font-style: italic; 
 }
 .capsule-hold{
     width: 100%;
@@ -56,7 +70,9 @@
     padding: 8px 12px;
     border-radius: 20px;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 20px;
+    line-height: 1.5;
+    background-color: #2c2c2c;
     font-style: italic;
     
 }
