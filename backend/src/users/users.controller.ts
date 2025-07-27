@@ -1,11 +1,13 @@
 
-import { Controller, Post, Body, UseGuards, UseInterceptors, UploadedFile, InternalServerErrorException } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, UseInterceptors, UploadedFile, InternalServerErrorException, Param, Put } from '@nestjs/common';
 import { UserService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthService } from '../auth/auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { UpdateUserDto } from './dto/UpdateUser.dto';
+import { User } from './entitiy/user.entitiy';
 
 @Controller('users')
 export class UserController {
@@ -42,4 +44,13 @@ export class UserController {
 } catch (error) {
     console.error('Error during login:', error); // Log the error
     throw new InternalServerErrorException('Login failed'); // Provide a user-friendly error message
-  }}  
+  }
+
+ @Put(':id')
+  async updateUser(
+    @Param('id') id: number,
+    @Body() updateUserDto: UpdateUserDto,
+  ): Promise<User> {
+    return this.userService.updateUser(id, updateUserDto);
+  }
+}
