@@ -5,6 +5,7 @@ import '../css/appheader.css';
 import { FaBell } from 'react-icons/fa';
 import { Navigate } from "react-router-dom";
 
+
 const AppHeader=()=>{
      const [profileImage, setProfileImage] = useState(null);
      const navigate = useNavigate(); 
@@ -16,13 +17,17 @@ const AppHeader=()=>{
                         setProfileImage(imageUrl);
                     }
                 };
-   const handleProfileClick = (user) => {
-    if (user && user.id) {
-        navigate(`/update/${user.id}`); // Pass the user ID to the URL
-    } else {
-        console.error("User ID is not available");
-    }
-};
+  const handleProfileClick = () => {
+        // Retrieve user info from local storage or another source
+        const user = JSON.parse(localStorage.getItem('loggedUser'));
+
+        if (user && user.id && user.username) {
+            // Pass both user ID and username to the URL
+            navigate(`/update/${user.id}?username=${encodeURIComponent(user.username)}`);
+        } else {
+            console.error("User ID or username is not available");
+        }
+    };
     return(
         <div className="appheader">
             <Header />
