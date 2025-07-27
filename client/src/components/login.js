@@ -12,6 +12,7 @@ const Login=()=>{
 
   const handleLogin = async() => {
     const formData= new FormData();
+   
 
     formData.append('username', username);
         formData.append('password', password);
@@ -21,18 +22,36 @@ const Login=()=>{
             formData.append('profileImage', blob, 'profile.png'); // Append the image
         }
 
+        // Log FormData for debugging
+    for (const [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+    
         try {
             const { data } = await axios.post('http://localhost:3000/users/login', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                   'Content-Type': 'application/json',
                 },
             });
             console.log('Login successful:', data);
+
+            // Assuming your backend response includes user ID
+        const userId = data.userId; // Adjust based on your actual response structure
+        const user = {
+            id: userId,
+            username: data.username, // Example; adjust as necessary
+        };
+
+        // Save user info in local storage
+        localStorage.setItem('loggedUser', JSON.stringify(user));
+
             // Save token or perform further actions
             navigate('/view'); // Navigate to AppHeaderPage
         } catch (error) {
-            console.error('Login failed:', error);
-        }
+            
+            alert('Login failed: ' + (error.response ? error.response.data.message : error.message));
+    console.error('Login failed:', error.response ? error.response.data : error.message);
+}
     };
   
 

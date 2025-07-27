@@ -11,6 +11,7 @@ import Sharepage from './page/sharepage.js';
 import Detailpage from './page/detailpage.js';
 import Createpage from './page/createpage.js';
 import Detailview from './components/detail.js';
+import Update from './components/update.js';
 
 const App=()=> {
 
@@ -28,6 +29,7 @@ const App=()=> {
                  <Route path="/detail" element={<Detailpage />} />
                 <Route path="/create" element={<Createpage />} />
                  <Route path="/capsule/:capsuleId" element={<Detailview />} />
+                 <Route path="/update/:userId" element={<Update />} />
            
             </Routes>
         </Router>

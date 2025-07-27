@@ -16,9 +16,13 @@ const AppHeader=()=>{
                         setProfileImage(imageUrl);
                     }
                 };
-       const handleProfileClick = () => {
-    navigate("/update"); // Navigate to lowercase /update
-  };
+   const handleProfileClick = (user) => {
+    if (user && user.id) {
+        navigate(`/update/${user.id}`); // Pass the user ID to the URL
+    } else {
+        console.error("User ID is not available");
+    }
+};
     return(
         <div className="appheader">
             <Header />
@@ -30,7 +34,7 @@ const AppHeader=()=>{
                 )}
             </div>
 
-                <div className="profile-plate" onClick={handleProfileClick}>
+                <div className="profile-plate" onClick={ handleProfileClick}>
                 <div className="profile-circle">
                     {profileImage ? (
                         <img src={profileImage} alt="Profile" className="profile-image" />

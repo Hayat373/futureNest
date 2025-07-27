@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../css/login.css'
 
 const Update = () => {
+    const {userId} = useParams(); // Get userId from URL parameters
     const [profileImage, setProfileImage] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');   
@@ -37,8 +37,9 @@ const Update = () => {
             };
 
             try {
-                const userId=1;
-                await axios.put(`http://localhost:3000/users/${userId}`, updateData);                alert("User update sucesssfully!");
+                
+                await axios.put(`http://localhost:3000/users/${userId}`, updateData); 
+                               alert("User update sucesssfully!");
                 navigate('/view'); // Navigate to the view page after successful update
             }
             catch (error){

@@ -1,5 +1,5 @@
 
-import { Controller, Post, Body, UseGuards, UseInterceptors, UploadedFile, InternalServerErrorException, Param, Put } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, UseInterceptors, UploadedFile, InternalServerErrorException, Param, Put, UnauthorizedException } from '@nestjs/common';
 import { UserService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
@@ -21,30 +21,24 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
- @Post('login')
-  @UseInterceptors(FileInterceptor('profileImage'))
-  async login(
-    @Body() loginUserDto: LoginUserDto,
-    @UploadedFile() file: Express.Multer.File,
-  ) {
-    const user = await this.authService.validateUser(loginUserDto); // Make sure validateUser exists in the UserService
-    const payload = { username: user.username, sub: user.id };
-    
-    // Handle file storage logic here (e.g., save to database)
-    if (file) {
-      // Save the file to the database or filesystem
-      // e.g., user.profileImage = file.path; // Adjust according to your logic
-    }
+ @Post('login') // Endpoint for user login
+    async login(@Body() loginUserDto: LoginUserDto) {
+        const user = await this.authService.validateUser(loginUserDto);
 
-    const accessToken = await this.authService.login(loginUserDto); // Use AuthService to generate the token
-    
-    return {
-      access_token: accessToken.access_token,
-    };
-} catch (error) {
-    console.error('Error during login:', error); // Log the error
-    throw new InternalServerErrorException('Login failed'); // Provide a user-friendly error message
-  }
+        if (!user) {
+            throw new UnauthorizedException('Invalid credentials'); // Handle invalid login
+        }
+
+        const payload = { username: user.username, sub: user.id }; // Include user ID in the token payload
+        const accessToken = this.authService.createToken(payload); // Generate the JWT token
+
+        // Return both the access token and user ID
+        return {
+            access_token: accessToken,
+            userId: user.id, // Include user ID in the response
+            username: user.username, // Optionally include username
+        };
+    }
 
  @Put(':id')
   async updateUser(
