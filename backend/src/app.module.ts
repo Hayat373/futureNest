@@ -8,6 +8,8 @@ import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './users/users.module';
 import { CapsuleModule } from './capsules/capsules.module';
 import { Capsule } from './capsules/entitiy/capsule.entitiy';
+import { EmailService } from './email/email.service';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -27,8 +29,11 @@ import { Capsule } from './capsules/entitiy/capsule.entitiy';
      AuthModule,
    
      CapsuleModule,
+   
+     EmailModule,
   
   ],
+  providers: [EmailService],
  
 })
 export class AppModule {}

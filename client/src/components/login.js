@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'; 
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/login.css'
+import ForgotPassword from './forgotpassword.js';
 
 const Login=()=>{
     const navigate = useNavigate();
@@ -110,7 +111,7 @@ const Login=()=>{
 </div>
 
  <div className="links">
-                <a href="#" className="link">Forgot Password?</a>
+                <Link to="/forgot-password" className="link">Forgot Password?</Link>
                <Link to="/signup" className="link" id="signup">
           Sign Up
         </Link>

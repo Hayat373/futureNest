@@ -25,4 +25,10 @@ export class User {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
+  @Column({ nullable: true })
+    resetToken?: string; // Optional: for password reset
+
+    @Column({ type: 'timestamp', nullable: true })
+    resetTokenExpires?: Date; // Optional
+
 }

@@ -16,4 +16,5 @@ export class UpdateUserDto {
   @IsOptional()
   @IsString()
   image?: string;
+  static restTokenExpress: number;
 }

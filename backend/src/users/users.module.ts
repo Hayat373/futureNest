@@ -4,12 +4,13 @@ import { UserController } from './users.controller';
 import { UserService } from './users.service';
 import { User } from './entitiy/user.entitiy';
 import { AuthModule } from '../auth/auth.module';
+import { EmailService } from 'src/email/email.service';
 
 @Module({
  imports: [TypeOrmModule.forFeature([User]),
  forwardRef(() => AuthModule)],  
  controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService, EmailService],
   exports: [UserService],
 })
 

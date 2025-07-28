@@ -56,4 +56,10 @@ export class UserController {
   ): Promise<User> {
     return this.userService.updateUser(id, updateUserDto);
   }
+
+  @Post('forgot-password')
+  async forgotpassword(@Body('email') email:string ){
+    const result = await this.authService.sendPasswordResetEmail(email);
+    return result;
+  }
 }

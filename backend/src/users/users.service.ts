@@ -11,12 +11,16 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { UpdateUserDto } from './dto/UpdateUser.dto';
+import { EmailService } from '../email/email.service'; // Assuming you have an EmailService for sending emails
+
 
 @Injectable()
 export class UserService {
+  [x: string]: any;
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
+     private emailService: EmailService,
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -41,6 +45,10 @@ export class UserService {
   return user ?? undefined; // Return undefined if user is null
 }
 
+async findByEmail(email:string):Promise<User| null>{
+  return this.usersRepository.findOne({ where: { email } });
+}
+
   async validateUser(loginUserDto: LoginUserDto): Promise<User> {
     const { username, password } = loginUserDto;
     const user = await this.findByUsername(username);
@@ -49,6 +57,15 @@ export class UserService {
     }
     return user;
   }
+
+  async saveResetToken(userId: number, token: string): Promise<void> {
+    const user = await this.usersRepository.findOne({ where: { id: userId } });
+    if (user) {
+        user.resetToken = token; // Assuming resetToken is a field in User entity
+        user.resetTokenExpires = new Date(Date.now() + 3600000); // Set expiration to 1 hour from now
+        await this.usersRepository.save(user);
+    }
+}
 
   async updateUser( id:number, updateUserDto: UpdateUserDto): Promise<User>{
     const user = await this.usersRepository.findOne({ where:{id}});
@@ -76,4 +93,12 @@ export class UserService {
     Object.assign(user, updateUserDto);
     return this.usersRepository.save(user);
   }
+
+    async sendMail(email: string, resetLink: string) {
+    if (!this.emailService) {
+      throw new Error('Email service is not defined');
+    }
+    await this.emailService.sendMail(email, resetLink);
+  }
+
 }
