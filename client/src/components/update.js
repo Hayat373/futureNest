@@ -48,6 +48,18 @@ const Update = () => {
             }
         };
 
+        const handleLogout = async () => {
+            try {
+                await axios.post('http://localhost:3000/users/logout');
+                localStorage.removeItem('userId'); // Clear userId from local storage
+                navigate('/login'); // Redirect to login page after logout
+            }
+            catch (error) {
+                console.error("Error during logout:", error);   
+                alert("Failed to logout. Please try again.");
+            }
+        };
+
     return(
         <div className="conatiner">
             <div className="profile-plate-login">
@@ -100,7 +112,7 @@ const Update = () => {
 
  
     <div className="button-hold">
-             <button type="button" className="logout_button">logout</button>
+             <button type="button" className="logout_button" onClick={handleLogout}>logout</button>
              <button type="submit" onClick={handleupdate} className="update_button">Update</button>
              </div>
             

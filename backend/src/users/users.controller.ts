@@ -1,5 +1,5 @@
 
-import { Controller, Post, Body, UseGuards, UseInterceptors, UploadedFile, InternalServerErrorException, Param, Put, UnauthorizedException } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, UseInterceptors, UploadedFile, InternalServerErrorException, Param, Put, UnauthorizedException, Req, Res } from '@nestjs/common';
 import { UserService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
@@ -8,6 +8,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UpdateUserDto } from './dto/UpdateUser.dto';
 import { User } from './entitiy/user.entitiy';
+import { Response } from 'express';
 
 @Controller('users')
 export class UserController {
@@ -39,6 +40,14 @@ export class UserController {
             username: user.username, // Optionally include username
         };
     }
+    @Post('logout')
+    logout(@Req() request: Request, @Res() response: Response) {
+        // Handle logout logic, such as invalidating the token
+        // This is a placeholder; actual implementation may vary
+        response.clearCookie('jwt'); // Example of clearing a JWT cookie
+        return response.status(200).send({ message: 'Logged out successfully' });
+    }
+    
 
  @Put(':id')
   async updateUser(
