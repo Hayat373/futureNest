@@ -20,6 +20,7 @@ const Search = () => {
     alert(`${state} clicked!`);
   };
 
+  
   return (
     <div className="header-container">
       <div className="search-container">
