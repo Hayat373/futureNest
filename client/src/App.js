@@ -10,7 +10,6 @@ import Updatepage from './page/updatepage.js';
 import Sharepage from './page/sharepage.js';
 import Detailpage from './page/detailpage.js';
 import Createpage from './page/createpage.js';
-import Detailview from './components/detail.js';
 import Update from './components/update.js';
 import ForgotPassword from './components/forgotpassword.js';
 
@@ -29,7 +28,7 @@ const App=()=> {
                  <Route path="/share" element={<Sharepage />} />
                  <Route path="/detail" element={<Detailpage />} />
                 <Route path="/create" element={<Createpage />} />
-                 <Route path="/capsule/:capsuleId" element={<Detailview />} />
+                 <Route path="/capsule/:capsuleId" element={<Detailpage />} />
                  <Route path="/update/:userId" element={<Update />} />
                    <Route path="/forgot-password" element={<ForgotPassword />} />
            
