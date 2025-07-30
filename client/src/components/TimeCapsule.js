@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 import "../css/Timecapsule.css";
 
-const TimeCapsule = ({ capsules, searchTerm }) => { // capsuleId is now a destructured prop
+const TimeCapsule = ({ capsules, searchTerm }) => {
     const navigate = useNavigate();
-    
 
     const handleUnlock = (capsuleId) => {
-        // Add unlock functionality here
         alert("Capsule unlocked!");
     };
 
@@ -17,13 +14,12 @@ const TimeCapsule = ({ capsules, searchTerm }) => { // capsuleId is now a destru
     };
 
     const handleNavigateToDetails = (capsuleId) => {
-         navigate(`/capsule/${capsuleId}`); // Navigate to the detail page for the specific capsule
+        navigate(`/capsule/${capsuleId}`);
     };
 
-     // Format unlock date
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        return date.toLocaleString(); // Format as desired
+        return date.toLocaleString();
     };
 
     // Filter capsules based on searchTerm
@@ -31,23 +27,55 @@ const TimeCapsule = ({ capsules, searchTerm }) => { // capsuleId is now a destru
         capsule.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Handle loading state
+    // State to hold countdowns
+    const [countdowns, setCountdowns] = useState(filteredCapsules.map(() => 0));
+
+    useEffect(() => {
+        const newCountdowns = filteredCapsules.map((capsule) => {
+            const unlockDateTime = new Date(capsule.unlockDateTime);
+            return Math.max(0, Math.floor((unlockDateTime - new Date()) / 1000));
+        });
+
+        setCountdowns(newCountdowns);
+
+        const timer = setInterval(() => {
+            setCountdowns((prevCountdowns) =>
+                prevCountdowns.map((countdown) => Math.max(0, countdown - 1))
+            );
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, [filteredCapsules]);
+
+    // Render loading only when capsules are initially empty
     if (capsules.length === 0) {
         return <div>Loading...</div>;
     }
 
-return (
+    // Render message when no capsules match the search
+    if (filteredCapsules.length === 0) {
+        return <div>No capsules found.</div>;
+    }
+
+    return (
         <div className="time-capsule-container">
-            {filteredCapsules.map((capsule) => (
+            {filteredCapsules.map((capsule, index) => (
                 <div className="capsule-card" key={capsule.id} onClick={() => handleNavigateToDetails(capsule.id)}>
                     <div className="capsule-header">
                         <span className="capsule-name">{capsule.title}</span>
                         <span className="capsule-time">{formatDate(capsule.unlockDateTime)}</span>
+                        <span className="capsule-countdown">
+                            {countdowns[index] > 0 ? `Unlocks in ${countdowns[index]} seconds` : "Unlocked!"}
+                        </span>
                     </div>
                     <div className="capsule-hold">
                         <div className="capsule-note">{capsule.description}</div>
                         <div className="capsule-actions">
-                            <button className="unlock-button" onClick={() => handleUnlock(capsule.id)}>
+                            <button
+                                className="unlock-button"
+                                onClick={() => handleUnlock(capsule.id)}
+                                disabled={countdowns[index] > 0}
+                            >
                                 Unlock
                             </button>
                             <button className="share-button" onClick={handleShare}>
