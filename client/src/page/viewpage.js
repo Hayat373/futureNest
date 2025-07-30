@@ -13,6 +13,7 @@ const Viewpage = () => {
     const [searchTerm, setSearchTerm] = useState("");
   const [capsules, setCapsules] = useState([]);
      const navigate = useNavigate(); 
+     
     const handleAddClick = () => {
       navigate('/create');
     };

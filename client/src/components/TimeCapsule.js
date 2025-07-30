@@ -28,7 +28,7 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
     );
 
     // State to hold countdowns
-    const [countdowns, setCountdowns] = useState(filteredCapsules.map(() => 0));
+    const [countdowns, setCountdowns] = useState([]);
 
     useEffect(() => {
         const newCountdowns = filteredCapsules.map((capsule) => {
@@ -45,7 +45,7 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [filteredCapsules]);
+    }, [filteredCapsules]); // Depend only on filteredCapsules
 
     // Render loading only when capsules are initially empty
     if (capsules.length === 0) {
@@ -63,9 +63,10 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
                 <div className="capsule-card" key={capsule.id} onClick={() => handleNavigateToDetails(capsule.id)}>
                     <div className="capsule-header">
                         <span className="capsule-name">{capsule.title}</span>
-                        <span className="capsule-time">{formatDate(capsule.unlockDateTime)}</span>
-                        <span className="capsule-countdown">
-                            {countdowns[index] > 0 ? `Unlocks in ${countdowns[index]} seconds` : "Unlocked!"}
+                        <span className="capsule-time">
+                            {countdowns[index] > 0 
+                                ? `Unlocks in ${countdowns[index]} seconds` 
+                                : `Unlocked at: ${formatDate(capsule.unlockDateTime)}`}
                         </span>
                     </div>
                     <div className="capsule-hold">
