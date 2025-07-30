@@ -10,7 +10,6 @@ import Updatepage from './page/updatepage.js';
 import Sharepage from './page/sharepage.js';
 import Detailpage from './page/detailpage.js';
 import Createpage from './page/createpage.js';
-import Update from './components/update.js';
 import ForgotPassword from './components/forgotpassword.js';
 
 const App=()=> {
@@ -29,7 +28,7 @@ const App=()=> {
                  <Route path="/detail" element={<Detailpage />} />
                 <Route path="/create" element={<Createpage />} />
                  <Route path="/capsule/:capsuleId" element={<Detailpage />} />
-                 <Route path="/update/:userId" element={<Update />} />
+                 <Route path="/update/:userId" element={<Updatepage />} />
                    <Route path="/forgot-password" element={<ForgotPassword />} />
            
             </Routes>

@@ -58,7 +58,7 @@ const Share = () => {
     return (
         <div className="share-container">
             <ToastContainer position="top-right" autoClose={3000} />
-            <h1>Share Time Capsule</h1>
+            <h1 className="share-header">Share Time Capsule</h1>
             {capsuleId && capsuleTitle ? (
                 <>
                     <p className="share-titile">Share the capsule: {capsuleTitle}</p>
@@ -73,7 +73,7 @@ const Share = () => {
             ) : (
                 <div>No capsule selected for sharing. Please try again.</div>
             )}
-            <button className="share-back-button" onClick={() => navigate("/")}>Back</button>
+            <button className="share-back-button" onClick={() => navigate("/view")}>Back</button>
         </div>
     );
 };
