@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../css/search.css";
 
-const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+const Search = ({ searchTerm, setSearchTerm }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [lockState, setLockState] = useState("Locked");
 

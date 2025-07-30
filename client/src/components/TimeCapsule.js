@@ -3,23 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import "../css/Timecapsule.css";
 
-const TimeCapsule = ({ capsuleId }) => { // capsuleId is now a destructured prop
-    const [capsules, setCapsules] = useState([]);
+const TimeCapsule = ({ capsules, searchTerm }) => { // capsuleId is now a destructured prop
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchCapsuleData = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3000/capsules`);
-                setCapsules(response.data);
-            } catch (error) {
-                console.error('Error fetching capsule data:', error);
-                alert('Failed to load capsule data.');
-            }
-        };
-
-        fetchCapsuleData();
-    }, []);
     
 
     const handleUnlock = (capsuleId) => {
@@ -41,6 +26,11 @@ const TimeCapsule = ({ capsuleId }) => { // capsuleId is now a destructured prop
         return date.toLocaleString(); // Format as desired
     };
 
+    // Filter capsules based on searchTerm
+    const filteredCapsules = capsules.filter(capsule =>
+        capsule.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     // Handle loading state
     if (capsules.length === 0) {
         return <div>Loading...</div>;
@@ -48,7 +38,7 @@ const TimeCapsule = ({ capsuleId }) => { // capsuleId is now a destructured prop
 
 return (
         <div className="time-capsule-container">
-            {capsules.map((capsule) => (
+            {filteredCapsules.map((capsule) => (
                 <div className="capsule-card" key={capsule.id} onClick={() => handleNavigateToDetails(capsule.id)}>
                     <div className="capsule-header">
                         <span className="capsule-name">{capsule.title}</span>
