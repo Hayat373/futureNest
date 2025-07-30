@@ -73,15 +73,7 @@ const Login=()=>{
                     ) : (
                         <div className="profile-placeholder-login"></div>
                     )}
-                    <label className="plus-icon-login">
-                        <span>+</span>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageUpload}
-                            style={{ display: 'none' }}
-                        />
-                    </label>
+                   
                 </div>
             </div>
 
