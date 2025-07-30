@@ -3,7 +3,7 @@
     height:110px;
     margin-left: 10%;
     margin-top: 10px;
-    background-color:#1E1E1E ;
+    background-color:#fdf9f9 ;
     border: #290B47;
     border-radius: 20px;
     transition:transform 0.3s ease, border-color 0.3s ease; 
@@ -13,6 +13,49 @@
 .share-crard-hold:hover{
    transform: scale(1.02); 
     border-color: #ae8bc8;
+}
+.share-titile{
+    font-size: 20px;
+    font-weight: 500;
+    color: #631CAD;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+.share-input{
+    width: 80%;
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #631CAD;
+    font-size: 16px;
+    color: #631CAD;
+}
+
+.share-link-button{
+    width: 80%;
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 10px;
+    background-color: #631CAD;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.share-back-button{
+    width: 80%;
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 10px;
+    background-color: #631CAD;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .profile-plate-share {

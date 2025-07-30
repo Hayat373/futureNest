@@ -1,13 +1,13 @@
 import React from "react";
 import AppHeader from "../components/AppHeader";
-import Sharecomponent from "../components/sharecomponent";
+import Share from "../components/sharecomponent";
 
 const Sharepage=()=>{
     return(
         <div className="share-hold">
         <AppHeader/>
 
-        <Sharecomponent />
+        <Share />
         </div>
     )
 };

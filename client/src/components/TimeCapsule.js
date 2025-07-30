@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Timecapsule.css";
@@ -5,16 +6,21 @@ import "../css/Timecapsule.css";
 const TimeCapsule = ({ capsules, searchTerm }) => {
     const navigate = useNavigate();
 
+    console.log("Capsules received in TimeCapsule:", capsules);
+
     const handleUnlock = (capsuleId) => {
+        console.log("Unlocking capsule:", capsuleId);
         navigate(`/capsule/${capsuleId}`);
     };
 
-    const handleShare = () => {
-        navigate('/share');
+    const handleShare = (capsuleId, capsuleTitle) => {
+        console.log("Sharing capsule:", { capsuleId, capsuleTitle });
+        navigate('/share', { state: { capsuleId, capsuleTitle } });
     };
 
     const handleNavigateToDetails = (capsuleId, countdown) => {
         if (countdown === 0) {
+            console.log("Navigating to details:", capsuleId);
             navigate(`/capsule/${capsuleId}`);
         }
     };
@@ -27,9 +33,9 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
     // Memoize filteredCapsules to prevent re-creation on every render
     const filteredCapsules = useMemo(() => {
         return capsules.filter(capsule =>
-            capsule.title.toLowerCase().includes(searchTerm.toLowerCase())
+            (capsule.title || capsule.name || capsule.caption || "").toLowerCase().includes(searchTerm.toLowerCase())
         );
-    }, [capsules, searchTerm]); // Depend on capsules and searchTerm
+    }, [capsules, searchTerm]);
 
     // State to hold countdowns
     const [countdowns, setCountdowns] = useState([]);
@@ -63,37 +69,52 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
 
     return (
         <div className="time-capsule-container">
-            {filteredCapsules.map((capsule, index) => (
-                <div
-                    className="capsule-card"
-                    key={capsule.id}
-                    onClick={() => handleNavigateToDetails(capsule.id, countdowns[index])}
-                >
-                    <div className="capsule-header">
-                        <span className="capsule-name">{capsule.title}</span>
-                        <span className="capsule-time">
-                            {countdowns[index] > 0
-                                ? `Unlocks in ${countdowns[index]} seconds`
-                                : `Unlocked at: ${formatDate(capsule.unlockDateTime)}`}
-                        </span>
-                    </div>
-                    <div className="capsule-hold">
-                        <div className="capsule-note">{capsule.description}</div>
-                        <div className="capsule-actions">
-                            <button
-                                className="unlock-button"
-                                onClick={() => handleUnlock(capsule.id)}
-                                disabled={countdowns[index] > 0}
-                            >
-                                Unlock
-                            </button>
-                            <button className="share-button" onClick={handleShare}>
-                                Share
-                            </button>
+            {filteredCapsules.map((capsule, index) => {
+                const capsuleId = capsule.id || capsule.capsuleId || capsule._id;
+                const capsuleTitle = capsule.title || capsule.name || capsule.caption || "Untitled";
+                console.log("Rendering capsule:", { capsuleId, capsuleTitle, capsule });
+                return (
+                    <div
+                        className="capsule-card"
+                        key={capsuleId}
+                        onClick={() => handleNavigateToDetails(capsuleId, countdowns[index])}
+                    >
+                        <div className="capsule-header">
+                            <span className="capsule-name">{capsuleTitle}</span>
+                            <span className="capsule-time">
+                                {countdowns[index] > 0
+                                    ? `Unlocks in ${countdowns[index]} seconds`
+                                    : `Unlocked at: ${formatDate(capsule.unlockDateTime)}`}
+                            </span>
+                        </div>
+                        <div className="capsule-hold">
+                            <div className="capsule-note">{capsule.description}</div>
+                            <div className="capsule-actions">
+                                <button
+                                    className="unlock-button"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleUnlock(capsuleId);
+                                    }}
+                                    disabled={countdowns[index] > 0}
+                                >
+                                    Unlock
+                                </button>
+                                <button
+                                    className="share-button"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleShare(capsuleId, capsuleTitle);
+                                    }}
+                                    disabled={countdowns[index] > 0}
+                                >
+                                    Share
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 };
