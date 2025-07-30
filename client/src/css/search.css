@@ -11,8 +11,17 @@
     display: flex;
     align-items: center;
     width:80%;
-    margin-left: 30px;
+    margin-left: 50px;
     margin-bottom: -30px;
+    border-radius: 20px; /* Rounded edges */
+     background-color: #ccc; 
+}
+.absolute {
+    position: absolute;
+    background-color: transparent;
+    margin-left: 10px;
+    opacity: 0.7;
+    margin-right: 10px;
 }
 
 .search-input {
@@ -23,8 +32,10 @@
     outline: none;
     background-color: #ccc; /* Light gray background */
     color: #333;
-    width: 70%;; /* Adjust width as needed */
+    width: 70%;;
+    margin-left: 20px; /* Adjust width as needed */
 }
+
 .droupdown-hold{
     width:163px;
     height: 34px;

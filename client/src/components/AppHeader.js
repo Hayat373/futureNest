@@ -41,15 +41,7 @@ const AppHeader=()=>{
                     ) : (
                         <div className="profile-placeholder"></div>
                     )}
-                    <label className="plus-icon">
-                        <span>+</span>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageUpload}
-                            style={{ display: 'none' }}
-                        />
-                    </label>
+                   
                 </div>
             </div>
 
