@@ -10,7 +10,7 @@
 .search-container {
     display: flex;
     align-items: center;
-    width:80%;
+    width:60%;
     margin-left: 50px;
     margin-bottom: -30px;
     border-radius: 20px; /* Rounded edges */

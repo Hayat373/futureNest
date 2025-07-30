@@ -1,5 +1,5 @@
 .time-capsule-container {
-    background-color: #1a1a1a;
+    background-color: #000000;
     color: #fff;
     padding: 10px 20px;
     display: flex;
@@ -38,16 +38,18 @@
 
 .capsule-name {
     font-size: 32px;
+    margin:10px;
     background-color: transparent;
     color: #bebabd;
     font-style: italic;
 }
 
 .capsule-time {
+    display: flex;
     font-size: 16px;
-    background-color: #F2E7FF;
+    background-color: #826f95;
     color: #631CAD;
-    width:100px;
+    width:200px;
     padding: 5px 10px;
     font-weight: bold;
     border-radius: 10px;
@@ -59,14 +61,14 @@
     width: 100%;
     height: auto;
     display: flex;
-    gap:60%;
+    gap:50%;
     background-color: transparent;
 }
 
 .capsule-note {
     background-color: transparent;
     color:white;
-    width:60%; 
+    width:70%; 
     padding: 8px 12px;
     border-radius: 20px;
     margin-bottom: 10px;
@@ -98,11 +100,11 @@
 }
 
 .unlock-button {
-    background-color: #b19cd9; /* Light purple */
+    background-color:#631CAD; /* Light purple */
 }
 
 .share-button {
-    background-color: #9370db; /* Darker purple */
+    background-color: #9356d4; /* Darker purple */
 }
 
 .unlock-button:hover, .share-button:hover {
