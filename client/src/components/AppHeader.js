@@ -32,12 +32,7 @@ const AppHeader=()=>{
         <div className="appheader">
             <Header />
 
-            <div className="notification-plate">
-                <FaBell className="notification-icon" />
-                {notificationCount > 0 && (
-                    <span className="notification-badge">{notificationCount}</span>
-                )}
-            </div>
+            
 
                 <div className="profile-plate" onClick={ handleProfileClick}>
                 <div className="profile-circle">
