@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Timecapsule.css";
 
@@ -6,15 +6,17 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
     const navigate = useNavigate();
 
     const handleUnlock = (capsuleId) => {
-        alert("Capsule unlocked!");
+        navigate(`/capsule/${capsuleId}`);
     };
 
     const handleShare = () => {
         navigate('/share');
     };
 
-    const handleNavigateToDetails = (capsuleId) => {
-        navigate(`/capsule/${capsuleId}`);
+    const handleNavigateToDetails = (capsuleId, countdown) => {
+        if (countdown === 0) {
+            navigate(`/capsule/${capsuleId}`);
+        }
     };
 
     const formatDate = (dateString) => {
@@ -22,10 +24,12 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
         return date.toLocaleString();
     };
 
-    // Filter capsules based on searchTerm
-    const filteredCapsules = capsules.filter(capsule =>
-        capsule.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // Memoize filteredCapsules to prevent re-creation on every render
+    const filteredCapsules = useMemo(() => {
+        return capsules.filter(capsule =>
+            capsule.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }, [capsules, searchTerm]); // Depend on capsules and searchTerm
 
     // State to hold countdowns
     const [countdowns, setCountdowns] = useState([]);
@@ -45,7 +49,7 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [filteredCapsules]); // Depend only on filteredCapsules
+    }, [filteredCapsules]);
 
     // Render loading only when capsules are initially empty
     if (capsules.length === 0) {
@@ -60,12 +64,16 @@ const TimeCapsule = ({ capsules, searchTerm }) => {
     return (
         <div className="time-capsule-container">
             {filteredCapsules.map((capsule, index) => (
-                <div className="capsule-card" key={capsule.id} onClick={() => handleNavigateToDetails(capsule.id)}>
+                <div
+                    className="capsule-card"
+                    key={capsule.id}
+                    onClick={() => handleNavigateToDetails(capsule.id, countdowns[index])}
+                >
                     <div className="capsule-header">
                         <span className="capsule-name">{capsule.title}</span>
                         <span className="capsule-time">
-                            {countdowns[index] > 0 
-                                ? `Unlocks in ${countdowns[index]} seconds` 
+                            {countdowns[index] > 0
+                                ? `Unlocks in ${countdowns[index]} seconds`
                                 : `Unlocked at: ${formatDate(capsule.unlockDateTime)}`}
                         </span>
                     </div>
