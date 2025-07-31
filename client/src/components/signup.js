@@ -31,7 +31,7 @@ const Signup = () => {
             email,
         };
         try{
-            const response=await axios.post('http://localhost:3000/users/signup', formData);
+            const response=await axios.post('/api/users/signup', formData);
             console.log('Signup successful:', response.data);
             navigate('/login'); // Navigate to login page after successful signup
         }
