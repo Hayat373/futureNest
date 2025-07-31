@@ -12,7 +12,7 @@ const Detailview = () => {
   useEffect(() => {
     const fetchCapsuleData = async () => {
       try {
-        const response = await axios.get(`/api/capsules/${capsuleId}`);
+        const response = await axios.get(`http://localhost:3000/capsules/${capsuleId}`);
         setContent(response.data); // Assuming response.data contains the capsule details
       } catch (error) {
         console.error('Error fetching capsule data:', error);

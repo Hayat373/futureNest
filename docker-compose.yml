@@ -1,7 +1,6 @@
 
 services:
   frontend:
-    image: yourusername/time-capsule-frontend:latest
     build:
       context: ./client
       dockerfile: Dockerfile
@@ -11,28 +10,22 @@ services:
       - backend
     environment:
       - NODE_ENV=production
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
     networks:
       - app-network
 
   backend:
-    image: yourusername/time-capsule-backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "3002:3000"  # Avoid port 3000 conflict
-    env_file:
-      - ./backend/.env
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_HOST=host.docker.internal
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=Hayat123@3
+      - DATABASE_NAME=timecapsule
     networks:
       - app-network
 

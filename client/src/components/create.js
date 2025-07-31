@@ -70,7 +70,7 @@ const Create = () => {
     
 
     try{
-      const response= await axios.post ('/api/capsules', formData,{
+      const response= await axios.post ('http://localhost:3000/capsules', formData,{
         headers:{
           'Content-Type':'multipart/form-data',
         },

@@ -38,7 +38,7 @@ const Update = () => {
 
             try {
                 
-                await axios.put(`/api/users/${userId}`, updateData); 
+                await axios.put(`http://localhost:3000/users/${userId}`, updateData); 
                                alert("User update sucesssfully!");
                 navigate('/view'); // Navigate to the view page after successful update
             }
@@ -50,7 +50,7 @@ const Update = () => {
 
         const handleLogout = async () => {
             try {
-                await axios.post('/api/users/logout');
+                await axios.post('http://localhost:3000/users/logout');
                 localStorage.removeItem('userId'); // Clear userId from local storage
                 navigate('/login'); // Redirect to login page after logout
             }
