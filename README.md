@@ -1,12 +1,12 @@
-# 🌌 Time Capsule Web App
+# Time Capsule Web App
 
-##Future Nest
+## Future Nest
 
-<img width="1892" height="858" alt="image" src="https://github.com/user-attachments/assets/9a3294b1-a8be-4510-82a1-25d9c1893f95" />
+![Time Capsule](https://github.com/user-attachments/assets/9a3294b1-a8be-4510-82a1-25d9c1893f95)
 
 A web application that allows users to create, manage, and share time capsules. Users can sign up, log in, and store messages, images, and files to be opened at a future date.
 
-## Features 🌟
+## Features
 
 - 🔒 User authentication (Sign Up, Log In)
 - 📦 Create and manage time capsules
@@ -14,45 +14,87 @@ A web application that allows users to create, manage, and share time capsules. 
 - 🎨 Frontend built with React
 - 🖥️ Backend built with NestJS
 
-## Tech Stack 🛠️
+## Tech Stack
 
 - **Frontend**: React, CSS
 - **Backend**: NestJS, TypeORM
-- **Database**: PostgreSQL (or your preferred database)
+- **Database**: PostgreSQL
+- **Containerization**: Docker, Docker Compose
 
-## Getting Started 🚀
+## Getting Started
 
-### Prerequisites ✅
+### Prerequisites
 
-Make sure you have the following installed:
+Ensure the following are installed:
 
-- 🟢 Node.js
-- 🟢 npm or yarn
-- 🟢 PostgreSQL (or your preferred database)
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [PostgreSQL](https://www.postgresql.org/download/) (configured to accept connections from Docker)
 
-### Clone the Repository 📥
+### Clone the Repository
 
 ```bash
 git clone https://github.com/Hayat373/futureNest.git
-cd futureNest ```
+cd futureNest
+```
 
-Setup Backend
-1,Navigate to the backend directory:
+#Setup Environment
+
+##Setup with Docker 🐳
+Build and Run the Docker Containers:
+From the root directory of your project, run:
+
+```bash
+docker-compose up --build
+```
+This command will build the Docker images for both the frontend and backend and start the containers.
+
+##Access the Application:
+
+The frontend will be accessible at http://localhost:3001.
+The backend will be accessible at http://localhost:3000.
+Setup Backend (Without Docker)
+
+If you prefer to set up the backend without Docker:
+Navigate to the backend directory:
+
+```bash
 cd backend
-2,Install dependencies:
+Install dependencies:
+```
+
+```bash
 npm install
-3, Create a .env file based on the .env.example provided and fill in your database credentials.
-4, Run the migrations (if applicable):
+```
+Create a .env file based on the .env.example provided and fill in your database credentials.
+
+Run the migrations (if applicable):
+```bash
 npm run migration:run
-5,Start the backend server:
+```
+Start the backend server:
+
+```bash
 npm run start
+```
+##Setup Frontend (Without Docker)
 
-## Setup Frontend 🎨
-1,Navigate to the client directory:
-cd ../client```
+If you prefer to set up the frontend without Docker:
 
+Navigate to the client directory:
 
+```bash
+cd ../client
+```
+Install dependencies:
 
+```bash
+npm install
+```
+Start the frontend server:
 
-
-
+```bash
+npm start
+```
+#Conclusion
+You now have a fully functional Time Capsule web application running locally! Feel free to explore and contribute to the project. 
