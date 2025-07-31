@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
-import '../css/login.css'
+import '../css/update.css'
 
 const Update = () => {
     const {userId} = useParams(); // Get userId from URL parameters
@@ -104,7 +104,7 @@ const Update = () => {
     <label id="email" htmlFor="name" className="email_label">Email</label>
 
     <br />
-    <input id="confirminput" type="text" className="confirm_field" placeholder="confirm Password" required value={confirmPassword} onChange={(e) =>setConfirmPassword(e.target.value)} />
+    <input id="confirminput" type="password" className="confirm_field" placeholder="confirm Password" required value={confirmPassword} onChange={(e) =>setConfirmPassword(e.target.value)} />
     <label id="confirm" htmlFor="name" className="confirm_label">Confirm Password</label>
     
 

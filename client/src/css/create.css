@@ -6,6 +6,7 @@
   width: 100%;
   max-width: 1000px;
   margin-left: 10%;
+   border: 2px solid #631CAD;
 }
 
 .input-field {
@@ -30,6 +31,7 @@
   color: #c77dff;
   font-size: 18px;
   background-color: transparent;
+  margin-left:10px;
 }
 
 .date-time-inputs {
@@ -51,6 +53,8 @@
 }
 .react-calendar_navigation{
   background-color: transparent;
+  margin-left: 20px;
+  margin-right: 20px;
   
 }
 

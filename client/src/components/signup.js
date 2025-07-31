@@ -75,7 +75,7 @@ const Signup = () => {
     <label id="email" htmlFor="name" className="email_label">Email</label>
 
     <br />
-    <input id="confirminput" type="text" className="confirm_field"  value={confirmPassword}  onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="confirm Password" required />
+    <input id="confirminput" type="password" className="confirm_field"  value={confirmPassword}  onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="confirm Password" required />
     <label id="confirm" htmlFor="name" className="confirm_label">Confirm Password</label>
     
 
