@@ -51,7 +51,6 @@ npm run start
 1,Navigate to the client directory:
 cd ../client```
 
-<img width="1892" height="858" alt="image" src="https://github.com/user-attachments/assets/9a3294b1-a8be-4510-82a1-25d9c1893f95" />
 
 
 
