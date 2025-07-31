@@ -1,5 +1,9 @@
 # 🌌 Time Capsule Web App
 
+##Future Nest
+
+<img width="1892" height="858" alt="image" src="https://github.com/user-attachments/assets/9a3294b1-a8be-4510-82a1-25d9c1893f95" />
+
 A web application that allows users to create, manage, and share time capsules. Users can sign up, log in, and store messages, images, and files to be opened at a future date.
 
 ## Features 🌟
@@ -45,7 +49,9 @@ npm run start
 
 ## Setup Frontend 🎨
 1,Navigate to the client directory:
-cd ../client
+cd ../client```
+
+
 
 
 
