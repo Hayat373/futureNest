@@ -10,7 +10,14 @@ A web application that allows users to create, manage, and share time capsules. 
 ## Features
 
 - 🔒 User authentication (Sign Up, Log In)
+  <img width="1898" height="880" alt="image" src="https://github.com/user-attachments/assets/b533ca14-456d-4b31-b5be-de579fae0286" />
+  
+<img width="1897" height="862" alt="image" src="https://github.com/user-attachments/assets/814bdc20-62b3-4896-a434-990f8e5c24f5" />
+
+
 - 📦 Create and manage time capsules
+  <img width="1902" height="845" alt="image" src="https://github.com/user-attachments/assets/4b4abd15-375b-4267-8b9c-5ad870ba8c39" />
+
 - 🔗 Share time capsules with others
 - 🎨 Frontend built with React
 - 🖥️ Backend built with NestJS
