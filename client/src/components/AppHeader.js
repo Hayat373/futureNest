@@ -17,7 +17,9 @@ const AppHeader=()=>{
             try {
                 const response = await axios.get(`http://localhost:3000/users/${userId}`);
                 const userData = response.data;
-                setProfileImage(userData.image); // Set the profile image from user data
+
+                 const baseUrl = 'http://localhost:3000/uploads/'; // Adjust this as necessary
+                setProfileImage(baseUrl +userData.image.split('\\').pop()); 
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
