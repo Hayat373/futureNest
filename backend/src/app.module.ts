@@ -31,9 +31,12 @@ import { EmailModule } from './email/email.module';
      CapsuleModule,
    
      EmailModule,
+   
+   
   
   ],
   providers: [EmailService],
+  controllers: [],
  
 })
 export class AppModule {}

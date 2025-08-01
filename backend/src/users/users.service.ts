@@ -24,13 +24,16 @@ export class UserService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const { username, email, password } = createUserDto;
+     console.log('DTO received in service:', createUserDto); 
+    const { username, email, password, image } = createUserDto; // Destructure profileImage
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = this.usersRepository.create({
       username,
       email,
       password: hashedPassword,
+      image, // Include profileImage here
     });
 
     try {
@@ -38,7 +41,7 @@ export class UserService {
     } catch (error) {
       throw new ConflictException('Username or email already exists');
     }
-  }
+}
 
   async findByUsername(username: string): Promise<User | undefined> {
   const user = await this.usersRepository.findOne({ where: { username } });

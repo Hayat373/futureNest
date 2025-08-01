@@ -9,6 +9,8 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { UpdateUserDto } from './dto/UpdateUser.dto';
 import { User } from './entitiy/user.entitiy';
 import { Response } from 'express';
+import { diskStorage } from 'multer';
+import { v4 as uuidv4 } from 'uuid';
 
 @Controller('users')
 export class UserController {
@@ -18,8 +20,33 @@ export class UserController {
   ) {}
 
   @Post('signup')
-  async signup(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  @UseInterceptors(FileInterceptor('profileImage', {
+    storage: diskStorage({
+      destination: './uploads', // Destination folder for files
+      filename: (req, file, cb) => {
+        const uniqueFilename = `${uuidv4()}-${file.originalname}`;
+        cb(null, uniqueFilename); // Save with a unique name
+      },
+    }),
+  }))
+  async signup(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() createUserDto: CreateUserDto,
+  ) {
+    if (!file) {
+      throw new InternalServerErrorException('File is required');
+    }
+
+    const profileImagePath = file.path; // Get the file path
+
+    // Pass the profile image path to the DTO or modify the DTO to include it
+    const userData = {
+      ...createUserDto,
+      image: profileImagePath,
+    };
+    console.log('User Data to be Saved:', userData); 
+
+    return this.userService.create(userData); // Pass user data to the service
   }
 
  @Post('login') // Endpoint for user login

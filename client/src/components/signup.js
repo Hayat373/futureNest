@@ -9,6 +9,7 @@ const Signup = () => {
     const [password, setPassword] = useState('');   
     const [email, setEmail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [imageFile, setImageFile] = useState(null);
     const navigate = useNavigate();
 
 
@@ -17,6 +18,7 @@ const Signup = () => {
         if (file) {
             const imageUrl = URL.createObjectURL(file);
             setProfileImage(imageUrl);
+            setImageFile(file); // Store the file for later use
         }
     };
 
@@ -25,13 +27,19 @@ const Signup = () => {
             alert("Passwords do not match");
             return;
         }
-        const formData = {
-            username,
-            password,
-            email,
-        };
+        const formData = new FormData(); // Create a FormData object
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('email', email);
+        if (imageFile) {
+            formData.append('profileImage', imageFile); // Append the image file
+        }
         try{
-            const response=await axios.post('http://localhost:3000/users/signup', formData);
+            const response=await axios.post('http://localhost:3000/users/signup', formData,{
+                headers: {
+                    'Content-Type': 'multipart/form-data', // Set the correct content type for FormData
+                },
+            });
             console.log('Signup successful:', response.data);
             navigate('/login'); // Navigate to login page after successful signup
         }
@@ -94,7 +102,7 @@ const Signup = () => {
         <div className="image-holder">
             <img src={require('../assets/Hello.png')} alt="Login" className="Hello-image" />    
             </div>
-            
+
         </div>
     )
 };
