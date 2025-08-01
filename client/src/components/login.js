@@ -3,11 +3,12 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/login.css'
 import ForgotPassword from './forgotpassword.js';
+import profileImagePlaseholder from '../assets/login.png';
 
 const Login=()=>{
     const navigate = useNavigate();
 
-    const [profileImage, setProfileImage] = useState(null);
+    const [profileImage, setProfileImage] = useState(profileImagePlaseholder);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
