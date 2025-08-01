@@ -2,6 +2,7 @@ import React from "react";
 import AppHeader from "../components/AppHeader";
 import Detailview from "../components/detail";
 
+
 const Detailpage=()=>{
     return(
         <div>

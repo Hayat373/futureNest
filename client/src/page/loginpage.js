@@ -7,7 +7,12 @@ const Loginpage=()=>{
     return(
         <div>
         <Header/>
+        <div className="loginpage">
         <Login />
+        <div className="image-holder">
+            <img src={require('../assets/Hello.png')} alt="Login" className="Hello-image" />
+        </div>
+        </div>
         </div>
     )
 }

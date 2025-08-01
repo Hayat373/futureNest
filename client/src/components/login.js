@@ -65,7 +65,6 @@ const Login=()=>{
         };
 
     return(
-        <div className="holder">
         <div className="conatiner">
             <div className="profile-plate-login">
                 <div className="profile-circle-login">
@@ -114,11 +113,9 @@ const Login=()=>{
            
             
         </div>
-        <div className="image-holder">
-            <img src={require('../assets/Hello.png')} alt="Login" className="Hello-image" />    
-            </div>
+        
 
-        </div>
+        
     )
       
          

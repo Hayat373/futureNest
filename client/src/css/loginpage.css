@@ -16,3 +16,21 @@
     height: auto;
     z-index: -1;
 }
+.loginpage {
+    position: relative;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+.image-holder {
+    position: absolute;
+    top: 20px;
+    right: 200px;
+}
+
+.Hello-image {
+    width: 300px;
+    height: auto;
+    z-index: -1;
+}
