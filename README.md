@@ -38,9 +38,9 @@ git clone https://github.com/Hayat373/futureNest.git
 cd futureNest
 ```
 
-#Setup Environment
+# Setup Environment
 
-##Setup with Docker 🐳
+## Setup with Docker 🐳
 Build and Run the Docker Containers:
 From the root directory of your project, run:
 
@@ -49,7 +49,7 @@ docker-compose up --build
 ```
 This command will build the Docker images for both the frontend and backend and start the containers.
 
-##Access the Application:
+## Access the Application:
 
 The frontend will be accessible at http://localhost:3001.
 The backend will be accessible at http://localhost:3000.
@@ -77,7 +77,7 @@ Start the backend server:
 ```bash
 npm run start
 ```
-##Setup Frontend (Without Docker)
+## Setup Frontend (Without Docker)
 
 If you prefer to set up the frontend without Docker:
 
@@ -96,5 +96,6 @@ Start the frontend server:
 ```bash
 npm start
 ```
-#Conclusion
+## Conclusion
+
 You now have a fully functional Time Capsule web application running locally! Feel free to explore and contribute to the project. 
