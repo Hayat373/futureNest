@@ -97,11 +97,22 @@ async findByEmail(email:string):Promise<User| null>{
     return this.usersRepository.save(user);
   }
 
+ 
+
     async sendMail(email: string, resetLink: string) {
     if (!this.emailService) {
       throw new Error('Email service is not defined');
     }
     await this.emailService.sendMail(email, resetLink);
   }
+
+ // user.service.ts
+   async getUserById(id: number): Promise<User> {
+    const user = await this.usersRepository.findOne({ where: { id } });
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+    return user;
+}
 
 }

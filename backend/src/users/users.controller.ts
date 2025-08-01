@@ -1,5 +1,5 @@
 
-import { Controller, Post, Body, UseGuards, UseInterceptors, UploadedFile, InternalServerErrorException, Param, Put, UnauthorizedException, Req, Res } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, UseInterceptors, UploadedFile, InternalServerErrorException, Param, Put, UnauthorizedException, Req, Res, Get } from '@nestjs/common';
 import { UserService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
@@ -76,6 +76,11 @@ export class UserController {
     }
     
 
+     @Get(':id')
+  async getUser(@Param('id') id: number): Promise<User> {
+    return this.userService.getUserById(id);
+  }
+  
  @Put(':id')
   async updateUser(
     @Param('id') id: number,
