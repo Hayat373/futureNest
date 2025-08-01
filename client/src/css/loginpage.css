@@ -1,3 +1,18 @@
 *{
     background-color: black;
 }
+.detailpage {
+    position: relative;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+.books {
+    position: absolute;
+    top: -20;
+    right: -100;
+    width: 300px;
+    height: auto;
+    z-index: -1;
+}

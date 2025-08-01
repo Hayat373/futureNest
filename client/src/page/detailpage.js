@@ -6,7 +6,11 @@ const Detailpage=()=>{
     return(
         <div>
         <AppHeader/>
+        <div className="detailpage">
         <Detailview/>
+        <img className="books" src={require('../assets/detail.png')} />
+        </div>
+        
         </div>
     )
 };
