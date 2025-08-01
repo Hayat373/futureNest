@@ -39,7 +39,7 @@ function RobotReact() {
       >
 
         
-        <img className='robot' src={require('../assets/robothead.jpg')} alt='Robot'/>
+        <img className='robot' src={require('../assets/robothead.png')} alt='Robot'/>
       </div>
     </div>
   );

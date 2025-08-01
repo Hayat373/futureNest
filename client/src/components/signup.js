@@ -43,6 +43,7 @@ const Signup = () => {
     };
 
     return(
+        <div className="holder">
         <div className="conatiner">
             <div className="profile-plate-login">
                 <div className="profile-circle-login">
@@ -87,6 +88,12 @@ const Signup = () => {
            <div className="text">
             <p>Already have accout?</p>
             <Link to="/login" className="link" id="login">Login</Link>             </div>
+            
+        </div>
+
+        <div className="image-holder">
+            <img src={require('../assets/Hello.png')} alt="Login" className="Hello-image" />    
+            </div>
             
         </div>
     )
