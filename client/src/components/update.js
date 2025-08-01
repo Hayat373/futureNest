@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 import '../css/update.css'
@@ -11,6 +11,24 @@ const Update = () => {
     const [email, setEmail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState(''); 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/users/${userId}`);
+                const userData = response.data;
+                setUsername(userData.username);
+                setEmail(userData.email);
+                const baseUrl = 'http://localhost:3000/uploads/';
+                setProfileImage(baseUrl + userData.image.split('\\').pop());
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                alert('Failed to load user data.');
+            }
+        };
+
+        fetchUserData();
+    }, [userId]); 
 
 
     const handleImageUpload = (e) => {
@@ -34,9 +52,15 @@ const Update = () => {
                 username,
                 password,
                 email,
+                image: profileImage ? profileImage.split('/').pop() : null, // Extract filename from URL
             };
 
             try {
+
+                const formData = new FormData();
+            for (const key in updateData) {
+                formData.append(key, updateData[key]);
+            }
                 
                 await axios.put(`http://localhost:3000/users/${userId}`, updateData); 
                                alert("User update sucesssfully!");
