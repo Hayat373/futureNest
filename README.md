@@ -2,14 +2,22 @@
 
 ## Future Nest
 
-![Time Capsule](https://github.com/user-attachments/assets/9a3294b1-a8be-4510-82a1-25d9c1893f95)
+<img width="1892" height="848" alt="image" src="https://github.com/user-attachments/assets/e903a82a-779c-4f69-ab89-ee743bdcc7db" />
+
 
 A web application that allows users to create, manage, and share time capsules. Users can sign up, log in, and store messages, images, and files to be opened at a future date.
 
 ## Features
 
 - 🔒 User authentication (Sign Up, Log In)
+  <img width="1898" height="880" alt="image" src="https://github.com/user-attachments/assets/b533ca14-456d-4b31-b5be-de579fae0286" />
+  
+<img width="1897" height="862" alt="image" src="https://github.com/user-attachments/assets/814bdc20-62b3-4896-a434-990f8e5c24f5" />
+
+
 - 📦 Create and manage time capsules
+  <img width="1902" height="845" alt="image" src="https://github.com/user-attachments/assets/4b4abd15-375b-4267-8b9c-5ad870ba8c39" />
+
 - 🔗 Share time capsules with others
 - 🎨 Frontend built with React
 - 🖥️ Backend built with NestJS
