@@ -98,7 +98,7 @@ cd ../client
 ```
 Install dependencies:
 
-hiii
+
 
 ```bash
 npm install
