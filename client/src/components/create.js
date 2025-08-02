@@ -6,37 +6,36 @@ import axios from "axios";
 const Create = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [dateTime, setDateTime] = useState(new Date()); // Combined date and time
+  const [dateTime, setDateTime] = useState(new Date());
   const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
-  const [textInput, setTextInput] = useState(""); // Initialize here
+  const [textInput, setTextInput] = useState("");
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDescriptionChange = (e) => setDescription(e.target.value);
 
   const handleDateChange = (newDate) => {
-    const updatedDateTime = new Date(dateTime);
-    updatedDateTime.setFullYear(newDate.getFullYear());
-    updatedDateTime.setMonth(newDate.getMonth());
-    updatedDateTime.setDate(newDate.getDate());
-    setDateTime(updatedDateTime);
+    const updated = new Date(dateTime);
+    updated.setFullYear(newDate.getFullYear());
+    updated.setMonth(newDate.getMonth());
+    updated.setDate(newDate.getDate());
+    setDateTime(updated);
   };
 
   const handleTimeChange = (e) => {
-    const time = e.target.value;
-    const [hours, minutes] = time.split(":");
-    const updatedDateTime = new Date(dateTime);
-    updatedDateTime.setHours(parseInt(hours, 10));
-    updatedDateTime.setMinutes(parseInt(minutes, 10));
-    updatedDateTime.setSeconds(0);
-    setDateTime(updatedDateTime);
+    const [hours, minutes] = e.target.value.split(":");
+    const updated = new Date(dateTime);
+    updated.setHours(parseInt(hours, 10));
+    updated.setMinutes(parseInt(minutes, 10));
+    updated.setSeconds(0);
+    setDateTime(updated);
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
     setIsDragging(false);
     const droppedFiles = Array.from(e.dataTransfer.files);
-    setFiles((prevFiles) => [...prevFiles, ...droppedFiles]);
+    setFiles((prev) => [...prev, ...droppedFiles]);
   };
 
   const handleDragOver = (e) => {
@@ -51,35 +50,24 @@ const Create = () => {
 
   const handleFileInput = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
+    setFiles((prev) => [...prev, ...selectedFiles]);
   };
 
   const handleUpload = async () => {
-   const formData = new FormData();
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("unlockDateTime", dateTime.toISOString());
+    formData.append("textInput", textInput);
+    files.forEach(file => formData.append("file", file));
 
-   formData.append("title", title);
-   formData.append("description", description); 
-   formData.append("unlockDateTime", dateTime.toISOString()); 
-   formData.append("textInput", textInput); // Append text input
-   // // Convert to ISO string
-
-   files.forEach(file => {
-      formData.append("file", file);
-    });
-
-    
-
-    try{
-      const response= await axios.post ('http://localhost:3000/capsules', formData,{
-        headers:{
-          'Content-Type':'multipart/form-data',
-        },
+    try {
+      const response = await axios.post("http://localhost:3000/capsules", formData, {
+        headers: { "Content-Type": "multipart/form-data" }
       });
-      console.log ('capsole created successfullt:', response.data);
-    }
-    catch(error){
-      console.log('Error creating capsule:' ,error.response ? error.response.data : error.message)
-      alert ('failed to create capsule:'+(error.response ? error.response.data.message : error.message));
+      console.log("Capsule created successfully:", response.data);
+    } catch (error) {
+      alert("Failed to create capsule: " + (error.response?.data.message || error.message));
     }
   };
 
@@ -88,90 +76,55 @@ const Create = () => {
     setDescription("");
     setDateTime(new Date());
     setFiles([]);
-    setTextInput(""); // Reset text input on cancel
-  };
-
-  const handleTextInputChange = (e) => {
-    setTextInput(e.target.value);
+    setTextInput("");
   };
 
   return (
-    <div className="upload-container">
-      <input
-        type="text"
-        value={title}
-        onChange={handleTitleChange}
-        placeholder="Title"
-        className="input-field"
-      />
-      <input
-        type="text"
-        value={description}
-        onChange={handleDescriptionChange}
-        placeholder="Description"
-        className="input-field"
-      />
-      <div className="date-time-section">
-        <div className="date-display">
-          {dateTime.toLocaleDateString()} {dateTime.toLocaleTimeString()}
-        </div>
-        <div className="date-time-inputs">
+    <div className="modern-upload-container">
+      <input type="text" placeholder="Title" value={title} onChange={handleTitleChange} className="modern-input" />
+      <input type="text" placeholder="Description" value={description} onChange={handleDescriptionChange} className="modern-input" />
+
+      <div className="modern-date-time">
+        <div className="calendar-container">
           <Calendar onChange={handleDateChange} value={dateTime} />
-          <input
-            type="time"
-            value={dateTime.toTimeString().slice(0, 5)} // Format as HH:MM
-            onChange={handleTimeChange}
-            className="time-input"
-          />
         </div>
-        <div className="date-buttons">
-          <button className="date-button">Cancel</button>
-          <button className="date-button">Save</button>
-        </div>
+        <input
+          type="time"
+          className="modern-time-input"
+          value={dateTime.toTimeString().slice(0, 5)}
+          onChange={handleTimeChange}
+        />
       </div>
+
       <div
-        className={`drop-zone ${isDragging ? "dragging" : ""}`}
+        className={`modern-drop-zone ${isDragging ? "dragging" : ""}`}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
       >
-        <span className="upload-icon">↑</span>
-        <p id="add_paragrah">Drag and drop file or choose files</p>
-        <input
-          type="file"
-          multiple
-          onChange={handleFileInput}
-          style={{ display: "none" }}
-          id="fileInput"
-        />
-        <label htmlFor="fileInput" className="file-input-label">
-          Choose Files
-        </label>
+        <span className="upload-icon">📁</span>
+        <p className="drag">Drag & drop your file(s) here</p>
+        <input type="file" multiple onChange={handleFileInput} id="fileInput" style={{ display: "none" }} />
+        <label htmlFor="fileInput" className="file-label">Choose File</label>
       </div>
+
       <div className="file-preview">
         {files.map((file, index) => (
-          <div key={index} className="file-item">
-            {file.name}
-          </div>
+          <div key={index} className="file-item">{file.name}</div>
         ))}
       </div>
-      <div className="action-buttons">
-        <button className="cancel-button" onClick={handleCancel}>
-          Cancel
-        </button>
-        <button className="upload-button" onClick={handleUpload}>
-          Upload
-        </button>
-      </div>
-      <input
-        id="text_create"
-        type="text"
-        value={textInput} // Bind to state
-        placeholder="Text"
-        className="input-field"
-        onChange={handleTextInputChange} // Handle input change
+
+      <textarea
+        className="modern-textarea"
+        placeholder="Enter your message or note here..."
+        value={textInput}
+        onChange={(e) => setTextInput(e.target.value)}
       />
-      <button className="add-button" onClick={handleUpload}>Add</button>
+
+      <div className="modern-button-row">
+        <button className="modern-btn cancel" onClick={handleCancel}>Cancel</button>
+        <button className="modern-btn primary" onClick={handleUpload}>Save</button>
+      </div>
     </div>
   );
 };
