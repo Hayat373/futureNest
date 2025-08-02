@@ -88,6 +88,7 @@ npm run start
 ```
 ## Setup Frontend (Without Docker)
 
+
 If you prefer to set up the frontend without Docker:
 
 Navigate to the client directory:
