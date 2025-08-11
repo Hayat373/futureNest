@@ -100,7 +100,7 @@ const Signup = () => {
         </div>
 
         <div className="image-holder">
-            <img src={require('../assets/Hello.png')} alt="Login" className="Hello-image" />    
+            <img src={require('../assets/hello.png')} alt="Login" className="Hello-image" />    
             </div>
 
         </div>
