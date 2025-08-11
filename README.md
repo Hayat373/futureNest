@@ -12,7 +12,8 @@ A web application that allows users to create, manage, and share time capsules. 
 - 🔒 User authentication (Sign Up, Log In)
   <img width="1898" height="880" alt="image" src="https://github.com/user-attachments/assets/b533ca14-456d-4b31-b5be-de579fae0286" />
   
-<img width="1897" height="862" alt="image" src="https://github.com/user-attachments/assets/814bdc20-62b3-4896-a434-990f8e5c24f5" />
+<img width="1906" height="865" alt="image" src="https://github.com/user-attachments/assets/054a27e5-ccf8-45d9-8d1d-08abae14b532" />
+
 
 
 - 📦 Create and manage time capsules
@@ -87,6 +88,7 @@ npm run start
 ```
 ## Setup Frontend (Without Docker)
 
+
 If you prefer to set up the frontend without Docker:
 
 Navigate to the client directory:
@@ -95,6 +97,8 @@ Navigate to the client directory:
 cd ../client
 ```
 Install dependencies:
+
+
 
 ```bash
 npm install
