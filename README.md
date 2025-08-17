@@ -112,7 +112,6 @@ Start the frontend server:
 npm start
 ```
 
-
 ## Conclusion
 
 You now have a fully functional Time Capsule web application running locally! Feel free to explore and contribute to the project. 
