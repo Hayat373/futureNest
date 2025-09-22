@@ -13,6 +13,9 @@ A web application that allows users to create, manage, and share time capsules. 
 - 🔒 User authentication (Sign Up, Log In)
   <img width="1898" height="880" alt="image" src="https://github.com/user-attachments/assets/b533ca14-456d-4b31-b5be-de579fae0286" />
 
+
+  
+
   
   
 <img width="1906" height="865" alt="image" src="https://github.com/user-attachments/assets/054a27e5-ccf8-45d9-8d1d-08abae14b532" />
