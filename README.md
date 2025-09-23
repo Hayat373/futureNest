@@ -4,11 +4,6 @@
 
 <img width="1892" height="848" alt="image" src="https://github.com/user-attachments/assets/e903a82a-779c-4f69-ab89-ee743bdcc7db" />
 
-
-
-
-
-
 A web application that allows users to create, manage, and share time capsules. Users can sign up, log in, and store messages, images, and files to be opened at a future date.
 
 
