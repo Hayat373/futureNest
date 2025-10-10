@@ -6,8 +6,6 @@
 
 A web application that allows users to create, manage, and share time capsules. Users can sign up, log in, and store messages, images, and files to be opened at a future date.
 
-
-
 ## Features
 
 - 🔒 User authentication (Sign Up, Log In)
